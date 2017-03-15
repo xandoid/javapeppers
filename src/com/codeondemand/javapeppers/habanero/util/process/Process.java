@@ -1,49 +1,51 @@
 package com.codeondemand.javapeppers.habanero.util.process;
 
+import org.apache.logging.log4j.LogManager;
+
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-
 public abstract class Process extends Observable implements Observer, Runnable {
 
-	// ***********************************************************************
-	// Constructors
-	// ***********************************************************************
-	public Process() {
-	};
+    // ***********************************************************************
+    // Constructors
+    // ***********************************************************************
+    public Process() {
+    }
 
-	
-	// ***********************************************************************
-	// Public methods and data
-	// ***********************************************************************
-	public boolean initialize(Properties p, String uid, String pwd) {
-		logger.debug("Process.initialize is a nop method, just returning true.");
-		return true;
-	}
+    ;
 
-	// ***********************************************************************
-	// Public methods and data
-	// ***********************************************************************
-	public boolean initialize(Properties p) {
-		logger.debug("Process.initialize is a nop method, just returning true.");
-		return true;
-	}
 
-	public boolean initialize( ProcessInfo p){		
-		logger.debug("Process.initialize is a nop method, just returning true.");
-		return true;
-	}
-	// ***********************************************************************
-	// Implementation for Observer interface
-	// ***********************************************************************
+    // ***********************************************************************
+    // Public methods and data
+    // ***********************************************************************
+    public boolean initialize(Properties p, String uid, String pwd) {
+        logger.debug("Process.initialize is a nop method, just returning true.");
+        return true;
+    }
 
-/*	*//**
-	 * This update will occur when an underlying objects have changed.
-	 * 
-	 *//*
-	public synchronized void update(Observable o, Object arg) {
+    // ***********************************************************************
+    // Public methods and data
+    // ***********************************************************************
+    public boolean initialize(Properties p) {
+        logger.debug("Process.initialize is a nop method, just returning true.");
+        return true;
+    }
+
+    public boolean initialize(ProcessInfo p) {
+        logger.debug("Process.initialize is a nop method, just returning true.");
+        return true;
+    }
+    // ***********************************************************************
+    // Implementation for Observer interface
+    // ***********************************************************************
+
+/*	*/
+    /**
+     * This update will occur when an underlying objects have changed.
+     *//*
+    public synchronized void update(Observable o, Object arg) {
 
 	}*/
 
@@ -62,6 +64,6 @@ public abstract class Process extends Observable implements Observer, Runnable {
 			notifyObservers();
 		}
 	}*/
-	
-	private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("Process");
+
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("Process");
 }

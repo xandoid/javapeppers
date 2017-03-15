@@ -1,6 +1,6 @@
 /**
-* Provides some general XML utility functions 
-* 
-* @author Gary Anderson
-*/
+ * Provides some general XML utility functions
+ *
+ * @author Gary Anderson
+ */
 package com.codeondemand.javapeppers.habanero.util.xml;

@@ -1,6 +1,4 @@
 /**
-*
-*@author Gary Anderson
-*
-*/
+ * @author Gary Anderson
+ */
 package com.codeondemand.javapeppers.sambal.util;

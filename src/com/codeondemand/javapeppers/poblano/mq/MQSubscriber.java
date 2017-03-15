@@ -5,68 +5,62 @@
 // --------------------------------------------------------------------------
 package com.codeondemand.javapeppers.poblano.mq;
 
+import com.ibm.mq.MQEnvironment;
 
-
-import com.ibm.mq.*;
-
-
-public class MQSubscriber implements Runnable{
+public class MQSubscriber implements Runnable {
 
     //***********************************************************************
     // Constructors
     //***********************************************************************
-    public MQSubscriber( ){
+    public MQSubscriber() {
     }
 
     //***********************************************************************
     // Public methods and data
     //***********************************************************************
 
-    public void initialize(String qm, String host, int port,
-                           String channel, String queue, MQListener listener ){
+    public void initialize(String qm, String host, int port, String channel, String queue, MQListener listener) {
 
         this.listener = listener;
 
         // Set up the getter object and connect
-        
-        MQEnvironment.hostname  = host;
-        MQEnvironment.port      = port;
-        MQEnvironment.channel   = channel;
-        getter = new MQGetter(  );
-        if( !getter.connect( qm, queue ) ){
-            System.err.println( classname + ": Failed to conect to MQ." );
+
+        MQEnvironment.hostname = host;
+        MQEnvironment.port = port;
+        MQEnvironment.channel = channel;
+        getter = new MQGetter();
+        if (!getter.connect(qm, queue)) {
+            System.err.println(classname + ": Failed to conect to MQ.");
         }
     }
 
-    public void run(){
-        try{
-            while( true ){
+    public void run() {
+        try {
+            while (true) {
                 boolean readmore = true;
-                while( readmore ){
-                    MQMessage mq_msg = getter.getMessage();
-                    if( mq_msg != null ){
+                while (readmore) {
+                    com.ibm.mq.MQMessage mq_msg = getter.getMessage();
+                    if (mq_msg != null) {
                         String msg = MQGetter.getTextPayload(mq_msg);
                         listener.incomingMessage(msg);
-                    }else{
+                    } else {
                         readmore = false;
                     }
                 }
                 Thread.sleep(500);
             }
-        }catch(InterruptedException ie){
-        	ie.printStackTrace();
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
         }
     }
-
-
 
 
     //***********************************************************************
     // Private data and methods
     //***********************************************************************
-    protected     MQGetter     getter    = null;
-    private       MQListener listener  = null;
-    private final String          classname = getClass().getName();
+    protected MQGetter getter = null;
+    private MQListener listener = null;
+    private final String classname = getClass().getName();
 }
 
 

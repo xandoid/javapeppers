@@ -1,18 +1,13 @@
 /**
- * 
+ *
  */
 package com.codeondemand.javapeppers.aleppo.filter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.TreeMap;
-
+import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
 import org.apache.logging.log4j.LogManager;
 
-import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
+import java.io.*;
+import java.util.TreeMap;
 
 /**
  * The KeyFilter class provides the ability to filter a processing stream by
@@ -22,62 +17,61 @@ import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
  * of the keys in the set of known keys. Obviously, this method has some
  * limitations for scaling, but should work well for filtering based on hundreds
  * of thousands of keys.
- * 
+ *
  * @author gfa
- * 
  */
 public class KeyFilter extends RecordFilter {
 
-	@Override
-	protected RecordCapsule filterRecord(RecordCapsule input) {
-		RecordCapsule retval = null;
-		String key = input.getKeyString();
-		if (key.length() == 0 || keys.containsKey(input.getKeyString())) {
-			retval = input;
-			logger.debug("Record passed->> " + input.toString());
-		} else {
-			logger.debug("Record filtered->> " + input.toString());
-			logger.debug("Key:>" + key + "<");
+    @Override
+    protected RecordCapsule filterRecord(RecordCapsule input) {
+        RecordCapsule retval = null;
+        String key = input.getKeyString();
+        if (key.length() == 0 || keys.containsKey(input.getKeyString())) {
+            retval = input;
+            logger.debug("Record passed->> " + input.toString());
+        } else {
+            logger.debug("Record filtered->> " + input.toString());
+            logger.debug("Key:>" + key + "<");
 
-		}
-		return retval;
-	}
+        }
+        return retval;
+    }
 
-	public boolean doInitialization() {
-		boolean retval = false;
-		if (pmap.containsKey("file") && pmap.get("file") instanceof String) {
-			String filename = (String) pmap.get("file");
-			try (BufferedReader brd = new BufferedReader(new FileReader(new File((String) filename)))) {
+    public boolean doInitialization() {
+        boolean retval = false;
+        if (pmap.containsKey("file") && pmap.get("file") instanceof String) {
+            String filename = (String) pmap.get("file");
+            try (BufferedReader brd = new BufferedReader(new FileReader(new File((String) filename)))) {
 
-				retval = true;
-				while (brd.ready()) {
-					String temp = brd.readLine();
-					if (temp != null) {
-						String key = temp.trim();
-						keys.put(key, 0);
-					}
-				}
-				brd.close();
+                retval = true;
+                while (brd.ready()) {
+                    String temp = brd.readLine();
+                    if (temp != null) {
+                        String key = temp.trim();
+                        keys.put(key, 0);
+                    }
+                }
+                brd.close();
 
-			} catch (FileNotFoundException e) {
-				logger.error("File containing keys not found: " + filename);
-			} catch (IOException e) {
-				logger.error("Error reading key file: " + e.toString());
-			}
+            } catch (FileNotFoundException e) {
+                logger.error("File containing keys not found: " + filename);
+            } catch (IOException e) {
+                logger.error("Error reading key file: " + e.toString());
+            }
 
-			// report the number of keys loaded.
-			logger.debug("Keys loaded: " + keys.size());
-		}
-		return retval;
-	}
+            // report the number of keys loaded.
+            logger.debug("Keys loaded: " + keys.size());
+        }
+        return retval;
+    }
 
-	private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("KeyFilter");
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("KeyFilter");
 
-	protected TreeMap<String, Integer> keys = new TreeMap<String, Integer>();
+    protected TreeMap<String, Integer> keys = new TreeMap<String, Integer>();
 
-	@Override
-	public void done() {
-		// TODO Auto-generated method stub
+    @Override
+    public void done() {
+        // TODO Auto-generated method stub
 
-	}
+    }
 }
