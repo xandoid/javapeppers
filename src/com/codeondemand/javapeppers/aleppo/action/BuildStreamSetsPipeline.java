@@ -14,7 +14,6 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
         if (!initialized) {
             initialized = doInitialization();
         }
-        RecordCapsule retval = input;
         if (input.checkField("SOURCE")) {
             keypfx = input.getField("SOURCE").getData().toString().toLowerCase();
         }
@@ -51,7 +50,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
             }
             input.addDataCapsule(new DataCapsule("pipeline", temp.toString()), false);
         }
-        return retval;
+        return input;
     }
 
     @Override
@@ -79,7 +78,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
             dbout = MiscUtil.mapString(props, dbout, "%");
         }
 
-        return retval;
+        return true;
     }
 
     private String subTokens(String foo, RecordCapsule rc) {
@@ -175,7 +174,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
         RecordCapsule f = (RecordCapsule) rc.getField("Field_data");
         int cnt = f.getFieldCount();
         if (pmap.containsKey("incl_tbl")) {
-            boolean incl_tbl = new Boolean((String) pmap.get("incl_tbl")).booleanValue();
+            boolean incl_tbl = Boolean.valueOf((String) pmap.get("incl_tbl")).booleanValue();
             if (incl_tbl) {
                 tbl_select_token = new String(tok_delim + "'" + rc.getField("TABLE_NAME").getData().toString() + "' as TBL_NAME");
             }

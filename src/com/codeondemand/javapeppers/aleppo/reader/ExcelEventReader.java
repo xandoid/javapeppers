@@ -75,13 +75,11 @@ public class ExcelEventReader extends SourceReader implements FilenameFilter, Ob
     }
 
     protected boolean isEmpty(Object[] row) {
-        boolean retval = true;
-        return retval;
+        return true;
     }
 
     protected boolean testRow(Object[] row) {
-        boolean retval = true;
-        return retval;
+        return true;
     }
 
     @Override

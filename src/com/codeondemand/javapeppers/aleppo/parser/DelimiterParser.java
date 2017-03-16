@@ -88,19 +88,18 @@ public class DelimiterParser extends KeyedRecordParser {
 
                             retval.addDataCapsule(bar, field.isKey());
 
-                            FieldSpecification fs = field;
                             bar.setMetaData("isKey", isKeyField(field.getField_num()));
-                            bar.setMetaData("type", fs.getType());
-                            bar.setMetaData("length", fs.getLength());
-                            bar.setMetaData("typeName", fs.getTypeName());
-                            bar.setMetaData("position", fs.getField_num() + 1);
-                            bar.setMetaData("isKey", fs.isKey());
+                            bar.setMetaData("type", field.getType());
+                            bar.setMetaData("length", field.getLength());
+                            bar.setMetaData("typeName", field.getTypeName());
+                            bar.setMetaData("position", field.getField_num() + 1);
+                            bar.setMetaData("isKey", field.isKey());
 
-                            logger.debug(fs.getType());
-                            logger.debug(fs.getTypeName());
-                            logger.debug(fs.getField_num());
-                            logger.debug(fs.getLength());
-                            logger.debug(fs.isKey());
+                            logger.debug(field.getType());
+                            logger.debug(field.getTypeName());
+                            logger.debug(field.getField_num());
+                            logger.debug(field.getLength());
+                            logger.debug(field.isKey());
                         }
 
                     }

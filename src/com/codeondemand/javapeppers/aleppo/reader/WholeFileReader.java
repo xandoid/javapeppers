@@ -53,7 +53,7 @@ public class WholeFileReader extends SourceReader {
     /**
      * Initializes this source reader with the specified file.
      *
-     * @param filename
+     * @param filename The name of the file to for reading.
      * @return true If the file can be opened and initialized as a record
      * source.
      */

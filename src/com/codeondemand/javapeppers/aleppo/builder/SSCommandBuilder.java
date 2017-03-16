@@ -113,103 +113,49 @@ public class SSCommandBuilder extends NullBuilder {
 
     private String buildImportCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../ss_server.txt`\n\n");
-        sb.append("# Shell script for importing a streamsets pipeline into a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl store import -n " + dbout + "_" + schema + "_" + table + " -f ./" + dbout + "_" + schema + "_" + table + ".json \n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../pwd.txt`\n\n" + "bar=`cat ../../uid.txt`\n\n" + "ssurl=`cat ../../ss_server.txt`\n\n" + "# Shell script for importing a streamsets pipeline into a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl store import -n " + dbout + "_" + schema + "_" + table + " -f ./" + dbout + "_" + schema + "_" + table + ".json \n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 
     private String buildDeleteCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../../ss_server.txt`\n\n");
-        sb.append("# Shell script for deleting a streamsets pipeline into a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl store delete -n " + dbout + "_" + schema + "_" + table + "\n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../pwd.txt`\n\n" + "bar=`cat ../../../uid.txt`\n\n" + "ssurl=`cat ../../../ss_server.txt`\n\n" + "# Shell script for deleting a streamsets pipeline into a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl store delete -n " + dbout + "_" + schema + "_" + table + "\n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 
     private String buildResetCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../../ss_server.txt`\n\n");
-        sb.append("# Shell script for resetting the origin of a streamsets pipeline into a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl  manager reset-origin -n " + dbout + "_" + schema + "_" + table + "\n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../../pwd.txt`\n\n" + "bar=`cat ../../../uid.txt`\n\n" + "ssurl=`cat ../../../ss_server.txt`\n\n" + "# Shell script for resetting the origin of a streamsets pipeline into a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl  manager reset-origin -n " + dbout + "_" + schema + "_" + table + "\n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 
     private String buildStartCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../../ss_server.txt`\n\n");
-        sb.append("# Shell script for starting a streamsets pipeline on a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl  manager start -n " + dbout + "_" + schema + "_" + table + "\n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../../pwd.txt`\n\n" + "bar=`cat ../../../uid.txt`\n\n" + "ssurl=`cat ../../../ss_server.txt`\n\n" + "# Shell script for starting a streamsets pipeline on a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl  manager start -n " + dbout + "_" + schema + "_" + table + "\n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 
     private String buildStopCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../../ss_server.txt`\n\n");
-        sb.append("# Shell script for stopping a streamsets pipeline on a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl  manager stop -n " + dbout + "_" + schema + "_" + table + "\n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../../pwd.txt`\n\n" + "bar=`cat ../../../uid.txt`\n\n" + "ssurl=`cat ../../../ss_server.txt`\n\n" + "# Shell script for stopping a streamsets pipeline on a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl  manager stop -n " + dbout + "_" + schema + "_" + table + "\n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 
     private String buildStatusCommand() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("#!/bin/bash\n\n");
-        sb.append("# need to keep the password in a file owned only by the executing user\n");
-        sb.append("foo=`cat ../../../pwd.txt`\n\n");
-        sb.append("bar=`cat ../../../uid.txt`\n\n");
-        sb.append("ssurl=`cat ../../../ss_server.txt`\n\n");
-        sb.append("# Shell script for getting status of a streamsets pipeline on a local pipeline instance\n");
-        sb.append("# Created automatically by a javapeppers workstream.\n\n");
-        sb.append("streamsets cli -u $bar -p $foo -U $ssurl  manager status -n " + dbout + "_" + schema + "_" + table + "\n");
-        sb.append("");
+        String sb = "#!/bin/bash\n\n" + "# need to keep the password in a file owned only by the executing user\n" + "foo=`cat ../../../pwd.txt`\n\n" + "bar=`cat ../../../uid.txt`\n\n" + "ssurl=`cat ../../../ss_server.txt`\n\n" + "# Shell script for getting status of a streamsets pipeline on a local pipeline instance\n" + "# Created automatically by a javapeppers workstream.\n\n" + "streamsets cli -u $bar -p $foo -U $ssurl  manager status -n " + dbout + "_" + schema + "_" + table + "\n" + "";
 
-        return sb.toString();
+        return sb;
 
     }
 

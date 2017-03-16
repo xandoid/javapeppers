@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class TestFileList {
 
     /**
-     * @param args
+     * @param args The directory and optional file pattern for search.
      */
     public static void main(String[] args) {
         String pattern = null;

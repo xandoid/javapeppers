@@ -18,7 +18,6 @@ public class EncryptionTransform extends RecordTransform {
 
     @Override
     public RecordCapsule doTransform(RecordCapsule input) {
-        RecordCapsule rc = input;
         if (!initialized) {
             initialized = doInitialization();
         }
@@ -27,10 +26,10 @@ public class EncryptionTransform extends RecordTransform {
                 String foo = input.getField(input_field).getData().toString();
                 byte[] etxt = encrypt(foo, pkey);
                 DataCapsule dc = new DataCapsule(output_field, etxt);
-                rc.addDataCapsule(dc, false);
+                input.addDataCapsule(dc, false);
             }
         }
-        return rc;
+        return input;
     }
 
     @Override

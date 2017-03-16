@@ -10,9 +10,8 @@ public abstract class ExecuteDBProcedure extends RecordProcessor {
 
     @Override
     public RecordCapsule processRecord(RecordCapsule input) {
-        RecordCapsule retval = input;
 
-        return retval;
+        return input;
     }
 
     @Override

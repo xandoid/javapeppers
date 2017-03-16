@@ -113,17 +113,14 @@ public class DDLBuilder extends NullBuilder {
     }
 
     private static String buildEnd() {
-        String retval = "\n);\n"; //$NON-NLS-1$
-        return retval;
+        return "\n);\n";
     }
 
     private String buildStart() {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("--DROP TABLE " + schema + "." + table + ";\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        sb.append("CREATE TABLE " + schema + "." + table + "("); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-
-        return sb.toString();
+        return ("--DROP TABLE " + schema + "." + table + ";\n") + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                "CREATE TABLE " + schema + "." + table + "(" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ;
 
     }
 

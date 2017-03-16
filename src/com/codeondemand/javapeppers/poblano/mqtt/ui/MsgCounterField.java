@@ -137,7 +137,7 @@ public class MsgCounterField extends JPanel implements MqttCallback {
     @Override
     public void messageArrived(String arg0, MqttMessage arg1) throws Exception {
         counterField.setText(new Integer(counter++).toString());
-        if (firstMessageReceived == false) {
+        if (!firstMessageReceived) {
             firstMessageReceived = true;
             start = new GregorianCalendar();
             startTimeField.setText(start.get(Calendar.HOUR) + ":" + start.get(Calendar.MINUTE) + ":" + start.get(Calendar.SECOND) + ":" + start.get(Calendar.MILLISECOND));

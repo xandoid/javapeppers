@@ -229,8 +229,7 @@ public class DBSourceReader extends SourceReader {
     }
 
     protected RecordCapsule newRecord(String name) {
-        RecordCapsule retval = new RecordCapsule(name, null);
-        return retval;
+        return new RecordCapsule(name, null);
     }
 
     protected void endRecord(RecordCapsule rc) {

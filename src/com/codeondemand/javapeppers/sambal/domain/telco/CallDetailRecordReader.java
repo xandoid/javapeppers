@@ -85,8 +85,7 @@ public class CallDetailRecordReader extends SourceReader {
     }
 
     private String getCallType() {
-        String retval = type_codes.get(rangen.nextInt(type_codes.size()));
-        return retval;
+        return type_codes.get(rangen.nextInt(type_codes.size()));
     }
 
     private String getPhoneNumber() {

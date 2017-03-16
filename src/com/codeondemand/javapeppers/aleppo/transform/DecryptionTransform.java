@@ -18,7 +18,6 @@ public class DecryptionTransform extends RecordTransform {
 
     @Override
     public RecordCapsule doTransform(RecordCapsule input) {
-        RecordCapsule rc = input;
         if (!initialized) {
             initialized = doInitialization();
             if (initialized) {
@@ -26,11 +25,11 @@ public class DecryptionTransform extends RecordTransform {
                     byte[] foo = (byte[]) input.getField(input_field).getData();
                     String txt = decrypt(foo, pkey);
                     DataCapsule dc = new DataCapsule(output_field, txt);
-                    rc.addDataCapsule(dc, false);
+                    input.addDataCapsule(dc, false);
                 }
             }
         }
-        return rc;
+        return input;
     }
 
     @Override

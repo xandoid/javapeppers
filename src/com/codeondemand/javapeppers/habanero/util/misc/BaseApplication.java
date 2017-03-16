@@ -19,7 +19,7 @@ public class BaseApplication {
         // Attempt to load the properties file.  This may fail, but if so
         // just log an error since we may not have have a valid name
         // for a property file.
-        if (pfile != null && !pfile.equals("")) {
+        if (!pfile.equals("")) {
             properties = MiscUtil.loadXMLPropertiesFile(pfile);
         } else {
             logger.error("No properties file found or loaded: " + pfile);
@@ -31,16 +31,13 @@ public class BaseApplication {
      * that has been loaded from the main properties file for
      * the application.
      *
-     * @param key          The name of the property.
-     * @param defaultValue The default to use if the property
-     *                     does not exist.
      * @return The value of the property if it exists, otherwise
      * it returns the default value that was passed
      */
-    protected String getProperty(String key, String defaultValue) {
-        String ret = defaultValue;
+    protected String getProperty() {
+        String ret = "1";
         if (properties != null) {
-            ret = properties.getProperty(key, defaultValue);
+            ret = properties.getProperty("connection.count", "1");
         }
         return ret;
     }

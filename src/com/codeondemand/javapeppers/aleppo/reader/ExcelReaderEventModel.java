@@ -238,7 +238,7 @@ public class ExcelReaderEventModel extends Observable implements HSSFListener, R
             }
         }
         setChanged();
-        notifyObservers(new Boolean(false));
+        notifyObservers(Boolean.FALSE);
         // TODO Auto-generated method stub
     }
 

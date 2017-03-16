@@ -394,18 +394,15 @@ public class ConfigurationLoader {
 
                     if (filename == null || filename.length() == 0) {
                         logger.debug(AleppoMessages.getString("ConfigurationLoader.20")); //$NON-NLS-1$
-                        String args = delimiter;
-                        retval = ParserFactory.createParser(ParserFactory.DELIMITED_PARSER, args);
+                        retval = ParserFactory.createParser(ParserFactory.DELIMITED_PARSER, delimiter);
                     } else {
                         String[] args = {delimiter, filename};
                         retval = ParserFactory.createParser(ParserFactory.DELIMITED_PARSER, args);
                     }
                 } else if (name.equals("com.codeondemand.javapeppers.aleppo.parser.NullRecordParser")) { //$NON-NLS-1$
-                    NullRecordParser p = new NullRecordParser();
-                    retval = p;
+                    retval = new NullRecordParser();
                 } else if (name.equals("com.codeondemand.javapeppers.aleppo.parser.JSONParser")) { //$NON-NLS-1$
-                    JSONParser p = new JSONParser();
-                    retval = p;
+                    retval = new JSONParser();
                     // Set the properties object
                     retval.setProperties(props);
 
@@ -663,7 +660,7 @@ public class ConfigurationLoader {
                             RecordCapsule rc = buildRecordCapsule((Element) r.item(0));
                             ((UIRecordWriter) retval).initialize(rc);
                         }
-                    } else if (retval instanceof DestinationWriter) {
+                    } else {
                         ((DestinationWriter) retval).setPmap(getAttributes(nl.item(0)));
                     }
                 }
@@ -820,7 +817,7 @@ public class ConfigurationLoader {
                             dc.setMetaData(m.item(j).getNodeName(), m.item(j).getNodeValue());
                         }
                     }
-                    retval.addDataCapsule(dc, new Boolean(f.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_ISKEY)).booleanValue());
+                    retval.addDataCapsule(dc, Boolean.valueOf(f.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_ISKEY)).booleanValue());
                 }
             }
         }

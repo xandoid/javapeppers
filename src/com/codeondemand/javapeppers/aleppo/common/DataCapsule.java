@@ -149,7 +149,7 @@ public class DataCapsule implements Serializable {
      *             DataCapsule.
      */
     public synchronized boolean setData(Object data) {
-        boolean retval = true;
+
         this.data = data;
         logger.debug("Setting data for " + name + " : " + data);
         if (data == null) {
@@ -158,7 +158,7 @@ public class DataCapsule implements Serializable {
             setMetaData(AleppoConstants.ALEPPO_DC_MDATA_TYPE_KEY, data.getClass().getCanonicalName());
             isNull = false;
         }
-        return retval;
+        return true;
     }
 
     /**
@@ -202,7 +202,7 @@ public class DataCapsule implements Serializable {
         boolean retval = true;
 
         if (data instanceof DataCapsule) {
-            retval = retval & ((DataCapsule) data).reset();
+            retval = ((DataCapsule) data).reset();
         } else {
             if (data instanceof DataCapsule[]) {
                 int len = ((DataCapsule[]) data).length;
