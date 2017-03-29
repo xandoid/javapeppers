@@ -76,7 +76,7 @@ public class SplitFileWriter extends DestinationWriter {
                         wrtr[isplit].flush();
                     }
                 } else if (pmap.containsKey("fields") && pmap.containsKey("delimiter")) {
-                    StringBuffer foo = new StringBuffer();
+                    StringBuilder foo = new StringBuilder();
                     StringTokenizer stok = new StringTokenizer((String) pmap.get("fields"), (String) pmap.get("delimiter"));
                     while (stok.hasMoreElements()) {
                         String tok = stok.nextToken();
@@ -129,8 +129,6 @@ public class SplitFileWriter extends DestinationWriter {
                             + AleppoMessages.getString("FileRecordDestination.6") + append); //$NON-NLS-1$
                 }
                 retval = true;
-            } catch (FileNotFoundException fnfe) {
-                logger.error(fnfe.toString());
             } catch (IOException ioe) {
                 logger.error(ioe.toString());
             }

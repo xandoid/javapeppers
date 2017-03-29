@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.TreeMap;
 
 public class RESTConnection {
@@ -57,9 +56,8 @@ public class RESTConnection {
             if (isPost) {
                 urlconn.setRequestMethod("POST");
                 if (!req_props.isEmpty()) {
-                    Iterator<String> it = req_props.keySet().iterator();
-                    while (it.hasNext()) {
-                        String key = it.next().toString();
+                    for (String s : req_props.keySet()) {
+                        String key = s.toString();
                         String val = req_props.get(key);
                         urlconn.setRequestProperty(key, val);
                     }
@@ -73,7 +71,7 @@ public class RESTConnection {
             in = new BufferedReader(new InputStreamReader(urlconn.getInputStream()));
 
             String str = null;
-            StringBuffer result = new StringBuffer();
+            StringBuilder result = new StringBuilder();
             while (in.ready() && (str = in.readLine()) != null) {
                 result.append(str + " "); //$NON-NLS-1$
             }
@@ -109,9 +107,8 @@ public class RESTConnection {
             if (isPost) {
                 urlconn.setRequestMethod("POST");
                 if (!req_props.isEmpty()) {
-                    Iterator<String> it = req_props.keySet().iterator();
-                    while (it.hasNext()) {
-                        String key = it.next().toString();
+                    for (String s : req_props.keySet()) {
+                        String key = s.toString();
                         String val = req_props.get(key);
                         urlconn.setRequestProperty(key, val);
                     }
@@ -164,7 +161,7 @@ public class RESTConnection {
     private boolean isPost = false;
     private String payload = null;
     private String request_string = null;
-    private TreeMap<String, String> req_props = new TreeMap<String, String>();
+    private TreeMap<String, String> req_props = new TreeMap<>();
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("RESTConnection");
 
 }

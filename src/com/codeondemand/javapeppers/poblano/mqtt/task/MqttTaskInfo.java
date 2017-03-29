@@ -15,7 +15,7 @@ public class MqttTaskInfo {
     private String sub_topic = null;
     private String qos = null;
     private String classname = null;
-    private Hashtable<String, String> fields = new Hashtable<String, String>();
+    private Hashtable<String, String> fields = new Hashtable<>();
 
     public void setField(String field, String value) {
         fields.put(field, value);

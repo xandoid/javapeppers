@@ -81,9 +81,6 @@ public class MqttConnector {
                 mqtt.connect(opts);
 
                 connections.put(name + "_" + broker.getName(), mqtt);
-            } catch (MqttException mqe) {
-                logger.error("MQTT connect failed for client: " + client);
-                logger.error(mqe.toString());
             } catch (Exception ex) {
                 logger.error("MQTT connect failed for client: " + client);
                 logger.error(ex.toString());
@@ -126,7 +123,7 @@ public class MqttConnector {
     // ***********************************************************************
     // Private data and methods
     // ***********************************************************************
-    private Hashtable<String, MqttClient> connections = new Hashtable<String, MqttClient>();
+    private Hashtable<String, MqttClient> connections = new Hashtable<>();
     private MqttClient mqtt = null;
     private boolean cleanStart = true;
 

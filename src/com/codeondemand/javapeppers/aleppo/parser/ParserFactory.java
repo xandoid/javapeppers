@@ -62,7 +62,7 @@ public class ParserFactory {
         boolean retval = true;
         if (formatfile != null) {
             BufferedReader brdr;
-            ArrayList<String[]> list = new ArrayList<String[]>();
+            ArrayList<String[]> list = new ArrayList<>();
 
             try {
 

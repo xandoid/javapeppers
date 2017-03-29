@@ -21,8 +21,6 @@ public class MqttReader extends SourceReader implements MqttCallback {
             if (mqtt_sub != null) {
                 mqtt_sub.disconnect();
             }
-        } catch (MqttPersistenceException e) {
-            logger.error(e.toString());
         } catch (MqttException e) {
             logger.error(e.toString());
         }
@@ -186,7 +184,7 @@ public class MqttReader extends SourceReader implements MqttCallback {
     protected int minQueueBuffer = 500;
     protected String uid = "";
     protected String pwd = "";
-    protected ConcurrentLinkedQueue<String> input = new ConcurrentLinkedQueue<String>();
+    protected ConcurrentLinkedQueue<String> input = new ConcurrentLinkedQueue<>();
 
     public void connectionLost(Throwable arg0) {
         System.err.println("Connection lost.");

@@ -25,9 +25,8 @@ public class NullRunnable extends AleppoRunnable {
     public void run() {
         Properties p = null;
         if (processData != null && (p = (Properties) processData.getMetaData(AleppoConstants.ALEPPO_DC_MDATA_PROPERTIES_KEY)) != null) {
-            java.util.Iterator<Object> it = p.keySet().iterator();
-            while (it.hasNext()) {
-                String key = (String) it.next();
+            for (Object o : p.keySet()) {
+                String key = (String) o;
                 logger.debug(key + ":" + p.getProperty(key));
             }
         }

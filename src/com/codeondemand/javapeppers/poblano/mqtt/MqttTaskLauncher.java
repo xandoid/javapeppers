@@ -236,7 +236,7 @@ public class MqttTaskLauncher {
     // Private data and methods
     // ***********************************************************************
 
-    private Hashtable<String, MqttBrokerInfo> btable = new Hashtable<String, MqttBrokerInfo>();
+    private Hashtable<String, MqttBrokerInfo> btable = new Hashtable<>();
     //private Hashtable<String, MqttTaskInfo> ttable = new Hashtable<String, MqttTaskInfo>();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("MqttTaskLauncher");

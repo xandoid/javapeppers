@@ -8,7 +8,7 @@ import com.codeondemand.javapeppers.aleppo.common.FieldSpecification;
 import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.Iterator;
+import java.sql.Types;
 
 public class FixedFormatParser extends KeyedRecordParser {
 
@@ -21,10 +21,8 @@ public class FixedFormatParser extends KeyedRecordParser {
         RecordCapsule r = null;
         if (input instanceof String) {
             r = new RecordCapsule("record", "record"); // NON-NLS-1
-            Iterator<FieldSpecification> it = fields.iterator();
             //int idx = 0;
-            while (it.hasNext()) {
-                FieldSpecification fs = it.next();
+            for (FieldSpecification fs : fields) {
                 String temp = null;
                 logger.debug(fs.getStart_pos() + ":" + fs.getLength() + ":" + fs.getType());
                 // Parse the fixed length section of the record and trim any
@@ -35,7 +33,7 @@ public class FixedFormatParser extends KeyedRecordParser {
                     if (temp.length() > 0) {
                         switch (fs.getType()) {
 
-                            case java.sql.Types.INTEGER:
+                            case Types.INTEGER:
                                 try {
                                     data = new Float(temp).intValue();
                                 } catch (NumberFormatException nfe) {
@@ -48,7 +46,7 @@ public class FixedFormatParser extends KeyedRecordParser {
                                 break;
                             // Convert decimal values to float so that we
                             //	can normalize the format.
-                            case java.sql.Types.DECIMAL:
+                            case Types.DECIMAL:
                                 data = new Float(temp);
                                 break;
                             default:

@@ -104,11 +104,7 @@ public class AleppoProcess extends RecordProcessor implements Observer {
                     temp = null;
                     logger.error(AleppoMessages.getString("AleppoProcess.8")); //$NON-NLS-1$
                 }
-            } catch (InstantiationException e) {
-                logger.error(e);
-            } catch (IllegalAccessException e) {
-                logger.error(e);
-            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
                 logger.error(e);
             }
         }
@@ -124,7 +120,7 @@ public class AleppoProcess extends RecordProcessor implements Observer {
     public void update(Observable o, Object arg) {
 
         if (arg instanceof Boolean) {
-            process_result = ((Boolean) arg).booleanValue();
+            process_result = (Boolean) arg;
         } else if (arg instanceof FlowResult) {
             process_result = ((FlowResult) arg).getProcess_result();
             logger.debug(AleppoMessages.getString("AleppoProcess.9") + o.getClass().toString() + //$NON-NLS-1$

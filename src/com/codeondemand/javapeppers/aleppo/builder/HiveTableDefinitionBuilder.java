@@ -107,7 +107,7 @@ public class HiveTableDefinitionBuilder extends NullBuilder {
         String retval = null;
         RecordCapsule fc = (RecordCapsule) rc.getField("Field_data");
         if (fc != null && fc.getFieldCount() > 0) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(buildStart());
             colnum = 0;
             for (int i = 0; i < fc.getFieldCount(); i++) {
@@ -135,7 +135,7 @@ public class HiveTableDefinitionBuilder extends NullBuilder {
     }
 
     private String addColumn(String name, String type, int len, int scale, boolean nullable) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (colnum > 0) {
             sb.append(","); //$NON-NLS-1$
         }

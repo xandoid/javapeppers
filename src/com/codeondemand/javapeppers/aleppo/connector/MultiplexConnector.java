@@ -117,7 +117,7 @@ public class MultiplexConnector extends Observable implements Observer {
     private int mode = RecordConnector.CONNECT_MODE_DUPLICATE;
     private int activesrccount = 0;
     private boolean doHeader = false;
-    private Vector<RecordConnector> connectors = new Vector<RecordConnector>();
+    private Vector<RecordConnector> connectors = new Vector<>();
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("MultiplexConnector");
 
 }

@@ -120,14 +120,14 @@ public class DBRecordWriter extends DestinationWriter {
         }
         if (data instanceof RecordCapsule) {
             RecordCapsule rc = (RecordCapsule) data;
-            StringBuffer sbuff = new StringBuffer("insert into " + //$NON-NLS-1$
+            StringBuilder sbuff = new StringBuilder("insert into " + //$NON-NLS-1$
                     dbschema + "." + dbtable + "( "); //$NON-NLS-1$ //$NON-NLS-2$
             types = new int[rc.getFieldCount()];
             String comma = new String();
             for (int idx = 0; idx < rc.getFieldCount(); idx++) {
                 String name = rc.getField(idx).getName();
                 //System.out.println(name);
-                types[idx] = typeTable.get(name).intValue();
+                types[idx] = typeTable.get(name);
                 sbuff.append(comma + name);
                 comma = ","; //$NON-NLS-1$
             }

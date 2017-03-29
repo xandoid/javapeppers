@@ -35,7 +35,7 @@ import java.util.*;
 public class ConfigurationLoader {
 
     public ArrayList<RecordConnector> initializeWithString(String configString) {
-        ArrayList<RecordConnector> retval = new ArrayList<RecordConnector>();
+        ArrayList<RecordConnector> retval = new ArrayList<>();
         if (configString == null || configString.trim().length() == 0) {
             retval = null;
             logger.error(AleppoMessages.getString(AleppoMessages.getString("ConfigurationLoader.11"))); //$NON-NLS-1$
@@ -55,7 +55,7 @@ public class ConfigurationLoader {
                         Element c = (Element) connlist.item(i);
                         Attr a = c.getAttributeNode("instances");
                         if (a != null) {
-                            int instances = new Integer(a.getValue()).intValue();
+                            int instances = new Integer(a.getValue());
                             for (int j = 0; j < instances; j++) {
                                 instance_num = j;
                                 retval.add(createConnector(c));
@@ -65,13 +65,7 @@ public class ConfigurationLoader {
                         }
                     }
                 }
-            } catch (SAXException e) {
-                retval = null;
-                logger.error(e.toString());
-            } catch (IOException e) {
-                retval = null;
-                logger.error(e.toString());
-            } catch (ParserConfigurationException e) {
+            } catch (SAXException | ParserConfigurationException | IOException e) {
                 retval = null;
                 logger.error(e.toString());
             }
@@ -88,7 +82,7 @@ public class ConfigurationLoader {
      * @return A configured and populated list of RecordConnector objects.
      */
     public ArrayList<RecordConnector> initialize(String configfile) {
-        ArrayList<RecordConnector> retval = new ArrayList<RecordConnector>();
+        ArrayList<RecordConnector> retval = new ArrayList<>();
 
         if (configfile == null || configfile.trim().length() == 0) {
             retval = null;
@@ -235,7 +229,7 @@ public class ConfigurationLoader {
                 }
             }
 
-            ArrayList<RecordDestination> dstlist = new ArrayList<RecordDestination>();
+            ArrayList<RecordDestination> dstlist = new ArrayList<>();
             NodeList dests = n.getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_DESTINATION_TAG);
             for (int i = 0; i < dests.getLength(); i++) {
                 Element d = (Element) dests.item(i);
@@ -274,13 +268,7 @@ public class ConfigurationLoader {
                     retval = (SourceConcentrator) temp;
                     retval.setSource(src);
                 }
-            } catch (InstantiationException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
@@ -306,11 +294,7 @@ public class ConfigurationLoader {
                         }
                     }
                 }
-            } catch (InstantiationException e) {
-                logger.error(e.toString());
-            } catch (IllegalAccessException e) {
-                logger.error(e.toString());
-            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
                 logger.error(e.toString());
             }
         }
@@ -345,11 +329,7 @@ public class ConfigurationLoader {
                 } else {
                     logger.error(AleppoMessages.getString("ConfigurationLoader.13")); //$NON-NLS-1$
                 }
-            } catch (InstantiationException e) {
-                logger.error(e.toString());
-            } catch (IllegalAccessException e) {
-                logger.error(e.toString());
-            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
                 logger.error(e.toString());
             }
         }
@@ -517,10 +497,7 @@ public class ConfigurationLoader {
                     retval = temp;
                     // System.out.println( temp.getClass());
                     logger.debug(AleppoMessages.getString("RecordConnector.16") + temp); //$NON-NLS-1$
-                } catch (NoSuchMethodException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SecurityException e) {
+                } catch (NoSuchMethodException | SecurityException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -576,7 +553,7 @@ public class ConfigurationLoader {
         dst.initialize(wrtr, bldr);
         String maxrec = d.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_MAXROWS);
         if (maxrec != null && maxrec.length() > 0) {
-            dst.setMaxRecordCount(new Long(maxrec).longValue());
+            dst.setMaxRecordCount(new Long(maxrec));
         }
         retval = dst;
         return retval;
@@ -718,18 +695,14 @@ public class ConfigurationLoader {
         Object retval = null;
         try {
             retval = Class.forName(name).newInstance();
-        } catch (InstantiationException e) {
-            logger.error(e.toString());
-        } catch (IllegalAccessException e) {
-            logger.error(e.toString());
-        } catch (ClassNotFoundException e) {
+        } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
             logger.error(e.toString());
         }
         return retval;
     }
 
     private static TreeMap<String, Object> getAttributes(Node nl) {
-        TreeMap<String, Object> map = new TreeMap<String, Object>();
+        TreeMap<String, Object> map = new TreeMap<>();
         NamedNodeMap attmap = nl.getAttributes();
         for (int i = 0; i < attmap.getLength(); i++) {
             String name = attmap.item(i).getNodeName();
@@ -817,14 +790,14 @@ public class ConfigurationLoader {
                             dc.setMetaData(m.item(j).getNodeName(), m.item(j).getNodeValue());
                         }
                     }
-                    retval.addDataCapsule(dc, Boolean.valueOf(f.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_ISKEY)).booleanValue());
+                    retval.addDataCapsule(dc, Boolean.valueOf(f.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_ISKEY)));
                 }
             }
         }
         return retval;
     }
 
-    private ArrayList<Object> flow_observers = new ArrayList<Object>();
+    private ArrayList<Object> flow_observers = new ArrayList<>();
     private Properties props = null;
     private static int instance_num = 0;
 

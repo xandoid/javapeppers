@@ -8,7 +8,7 @@ public class SplitLabeller extends RecordProcessor {
 
     @Override
     public RecordCapsule processRecord(RecordCapsule input) {
-        input.addDataCapsule(new DataCapsule(split_field, new Integer(split_value)), false);
+        input.addDataCapsule(new DataCapsule(split_field, split_value), false);
         if (split_value < splits) {
             split_value = split_value + 1;
         } else {

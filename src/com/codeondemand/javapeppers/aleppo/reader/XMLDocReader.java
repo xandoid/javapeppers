@@ -31,7 +31,7 @@ public class XMLDocReader extends FileSourceReader {
             e.printStackTrace();
         }
 
-        StringBuffer querysb = new StringBuffer();
+        StringBuilder querysb = new StringBuilder();
         while (true) {
             String foo = (String) super.read();
             if (foo == null) {

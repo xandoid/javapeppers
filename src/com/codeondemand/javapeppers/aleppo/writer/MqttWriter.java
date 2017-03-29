@@ -28,8 +28,6 @@ public class MqttWriter extends DestinationWriter {
                 mqtt_pub.disconnect();
                 retval = true;
             }
-        } catch (MqttPersistenceException e) {
-            logger.error(e.toString());
         } catch (MqttException e) {
             logger.error(e.toString());
         }
@@ -88,7 +86,7 @@ public class MqttWriter extends DestinationWriter {
                     ArrayList<String> list = MiscUtil.StringToList(fields, "|");
                     if (list.size() > 1) {
                         Iterator<String> it = list.iterator();
-                        StringBuffer foo = new StringBuffer();
+                        StringBuilder foo = new StringBuilder();
                         while (it.hasNext()) {
                             String field = it.next();
                             String temp = ((RecordCapsule) data).getField(field).getData().toString();
@@ -115,7 +113,7 @@ public class MqttWriter extends DestinationWriter {
                 } else {
                     if (data instanceof RecordCapsule) {
                         RecordCapsule temp = (RecordCapsule) data;
-                        StringBuffer foo = new StringBuffer();
+                        StringBuilder foo = new StringBuilder();
                         for (int i = 0; i < temp.getFieldCount(); i++) {
                             if (!temp.getField(i).isNull()) {
                                 foo.append(temp.getField(i).getData().toString() + "|");

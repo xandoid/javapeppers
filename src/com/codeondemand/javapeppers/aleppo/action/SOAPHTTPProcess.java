@@ -20,7 +20,7 @@ public class SOAPHTTPProcess extends RecordProcessor {
 
     public boolean doInitialization() {
         boolean retval = false;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (pmap.containsKey("file") && pmap.get("file") instanceof String) {
             String filename = (String) pmap.get("file");
             FileSourceReader rdr = new FileSourceReader();
@@ -115,7 +115,7 @@ public class SOAPHTTPProcess extends RecordProcessor {
             logger.debug("URL Class:" + u);
 
             HttpsURLConnection c = null;
-            StringBuffer outputsb = new StringBuffer();
+            StringBuilder outputsb = new StringBuilder();
             try {
                 if (u != null) {
                     c = (HttpsURLConnection) u.openConnection();

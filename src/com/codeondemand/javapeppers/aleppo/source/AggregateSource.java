@@ -80,7 +80,7 @@ public class AggregateSource extends RecordSource {
     public boolean initialize(Object[] args) {
         boolean retval = false;
         if (args != null && args.length > 0 && args[0] instanceof RecordSource) {
-            sources = new Vector<RecordSource>(args.length);
+            sources = new Vector<>(args.length);
             for (Object arg : args) {
                 if (arg instanceof RecordSource) {
                     sources.add((RecordSource) arg);
@@ -125,7 +125,7 @@ public class AggregateSource extends RecordSource {
     public boolean setSource(RecordSource src) {
         boolean retval = false;
         if (sources == null) {
-            sources = new Vector<RecordSource>();
+            sources = new Vector<>();
             retval = sources.add(src);
         } else {
             sources.add(src);

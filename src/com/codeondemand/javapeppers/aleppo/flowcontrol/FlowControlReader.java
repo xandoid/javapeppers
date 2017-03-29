@@ -63,8 +63,8 @@ public class FlowControlReader extends SourceReader {
                 long flow_id = rs.getLong("FLOW_ID");
                 int cfg_id = rs.getInt("CFG_ID");
                 rc = new RecordCapsule("record_" + flow_id + "_" + cfg_id, null);
-                rc.addDataCapsule(new DataCapsule("FLOW_ID", new Long(flow_id)), false);
-                rc.addDataCapsule(new DataCapsule("CFG_ID", new Integer(cfg_id)), false);
+                rc.addDataCapsule(new DataCapsule("FLOW_ID", flow_id), false);
+                rc.addDataCapsule(new DataCapsule("CFG_ID", cfg_id), false);
 
                 // Mark the start time.
                 setFlowTime(flow_id, cfg_id);

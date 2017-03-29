@@ -43,10 +43,7 @@ public class StdSourceReader extends SourceReader {
                     retval = rdr.readLine();
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         return retval;

@@ -63,7 +63,7 @@ public class DDLBuilder extends NullBuilder {
     public Object buildRecord(RecordCapsule rc) {
         String retval = null;
         if (rc != null && rc.getFieldCount() > 0) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(buildStart());
             colnum = 0;
             for (int i = 0; i < rc.getFieldCount(); i++) {
@@ -92,7 +92,7 @@ public class DDLBuilder extends NullBuilder {
 
 
     private String addColumn(String name, String type, int len, boolean nullable) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (colnum > 0) {
             sb.append(","); //$NON-NLS-1$
         }

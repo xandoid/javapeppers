@@ -87,7 +87,7 @@ public class RESTProcess extends RecordProcessor {
             urlconn.setRequestProperty("Authorization", basicauth);
             try (BufferedReader in = new BufferedReader(new InputStreamReader(urlconn.getInputStream()))) {
                 String str = null;
-                StringBuffer result = new StringBuffer();
+                StringBuilder result = new StringBuilder();
                 while ((str = in.readLine()) != null) {
                     result.append(str + " "); //$NON-NLS-1$
                 }

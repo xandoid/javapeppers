@@ -22,11 +22,11 @@ public class GridGeocodeGenerator extends RecordProcessor {
             TreeMap<String, String> map = (TreeMap<String, String>) params[0];
 
             if (map.containsKey("min_lat") && map.containsKey("max_lat") && map.containsKey("min_long") && map.containsKey("max_long") && map.containsKey("lat_incr") && map.containsKey("long_incr") && map.containsKey("lat_tag") && map.containsKey("long_tag")) {
-                min_lat = new Double(map.get("min_lat")).doubleValue();
-                max_lat = new Double(map.get("max_lat")).doubleValue();
+                min_lat = new Double(map.get("min_lat"));
+                max_lat = new Double(map.get("max_lat"));
                 //lat_incr = new Double(map.get("lat_incr")).doubleValue();
-                min_long = new Double(map.get("min_long")).doubleValue();
-                max_long = new Double(map.get("max_long")).doubleValue();
+                min_long = new Double(map.get("min_long"));
+                max_long = new Double(map.get("max_long"));
                 //long_incr = new Double(map.get("long_incr")).doubleValue();
                 lat_tag = map.get("lat_tag");
                 long_tag = map.get("long_tag");
@@ -49,8 +49,8 @@ public class GridGeocodeGenerator extends RecordProcessor {
 
         if (initialized) {
 
-            double templat = new Double(rangen.nextInt(lat_range) / 100000.0);
-            double templong = new Double(rangen.nextInt(long_range) / 100000.0);
+            double templat = rangen.nextInt(lat_range) / 100000.0;
+            double templong = rangen.nextInt(long_range) / 100000.0;
             DataCapsule dclat = new DataCapsule(lat_tag, min_lat + templat);
             dclat.setMetaData("typeName", "REAL");
             dclat.setMetaData("type", java.sql.Types.REAL);

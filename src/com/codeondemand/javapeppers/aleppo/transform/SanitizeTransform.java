@@ -113,7 +113,7 @@ public class SanitizeTransform extends RecordTransform {
 
     private void setTokenSampleData(DataCapsule dc) {
         if (token_list == null && pmap.containsKey("values")) {
-            token_list = new ArrayList<String>();
+            token_list = new ArrayList<>();
             StringTokenizer stok = new StringTokenizer(pmap.get("values").toString(), "|");
             while (stok.hasMoreTokens()) {
                 token_list.add(stok.nextToken());

@@ -116,7 +116,7 @@ public class MqttPublisherThread extends MqttPublisher implements Runnable {
     private byte qos = 0;
     private boolean notFinished = true;
     private long sleep_interval = 0L;
-    protected ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<String>();
+    protected ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("MqttPublisherThread");
 

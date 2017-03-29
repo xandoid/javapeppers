@@ -117,7 +117,7 @@ public class CaseTransform extends RecordTransform {
     public final static int TO_LOWER_CASE = 2;
     public final static int MAX_OPTION = 2;
 
-    private ArrayList<String> names = new ArrayList<String>();
+    private ArrayList<String> names = new ArrayList<>();
 
     // Note: This is illegal so if not set by application, this
     private int defaultConversion = NO_CONVERSION;

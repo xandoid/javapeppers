@@ -132,9 +132,8 @@ public class GetFileList implements FilenameFilter {
         gfl.setGetDirectories(true);
         gfl.getList();
 
-        @SuppressWarnings("rawtypes") Iterator foo = gfl.files.iterator();
-        while (foo.hasNext()) {
-            String s = foo.next().toString();
+        for (Object file : gfl.files) {
+            String s = file.toString();
             File bar = new File(s);
             if (bar.isFile()) {
                 System.out.println(s + ": " + bar.length());
@@ -150,7 +149,7 @@ public class GetFileList implements FilenameFilter {
     private String file_dir = ".";
     private String file_pattern = null;
 
-    private ArrayList<String> files = new ArrayList<String>();
+    private ArrayList<String> files = new ArrayList<>();
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("GetFileList");
 
 }

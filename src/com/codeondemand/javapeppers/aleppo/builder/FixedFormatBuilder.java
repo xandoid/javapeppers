@@ -59,7 +59,7 @@ public class FixedFormatBuilder extends NullBuilder {
             initialized = buildFields(r);
         }
         String retval = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int idx = 0;
         while (idx < r.getFieldCount()) {
@@ -85,5 +85,5 @@ public class FixedFormatBuilder extends NullBuilder {
 
     private boolean initialized = false;
     private String eol = "";
-    private ArrayList<FieldSpecification> fields = new ArrayList<FieldSpecification>();
+    private ArrayList<FieldSpecification> fields = new ArrayList<>();
 }

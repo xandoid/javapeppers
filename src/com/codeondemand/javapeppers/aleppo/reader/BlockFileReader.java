@@ -134,8 +134,6 @@ public class BlockFileReader extends SourceReader {
                 } else {
                     logger.error(AleppoMessages.getString("FileSourceReader.6") + file.getAbsolutePath()); //$NON-NLS-1$
                 }
-            } catch (FileNotFoundException fnfe) {
-                logger.error(fnfe.toString());
             } catch (IOException ioe) {
                 logger.error(ioe.toString());
             }
@@ -152,7 +150,7 @@ public class BlockFileReader extends SourceReader {
 
     public Object read() {
         Object retval = null;
-        StringBuffer bigbuff = new StringBuffer();
+        StringBuilder bigbuff = new StringBuilder();
         try {
             if (!endOfRecords) {
                 if (isBinary) {

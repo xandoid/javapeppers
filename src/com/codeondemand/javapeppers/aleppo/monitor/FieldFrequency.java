@@ -10,7 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import java.io.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.TreeMap;
 
 public class FieldFrequency extends MonitorProcess {
@@ -85,9 +84,7 @@ public class FieldFrequency extends MonitorProcess {
                             br.write("" + temp.size());
                         }
                         if (temp.size() <= uniqlimit) {
-                            Iterator<String> k = temp.keySet().iterator();
-                            while (k.hasNext()) {
-                                String foo = k.next();
+                            for (String foo : temp.keySet()) {
                                 br.write("|");
                                 if (foo.length() == 0) {
                                     br.write("null");
@@ -126,8 +123,8 @@ public class FieldFrequency extends MonitorProcess {
     protected synchronized boolean doMonitor(RecordCapsule input) {
 
         if (counters == null) {
-            counters = new ArrayList<Long>();
-            names = new ArrayList<String>();
+            counters = new ArrayList<>();
+            names = new ArrayList<>();
             for (int i = 0; i < input.getFieldCount(); i++) {
                 DataCapsule dc = input.getField(i);
                 String name = dc.getName();
@@ -163,14 +160,14 @@ public class FieldFrequency extends MonitorProcess {
     private void doUnique(String name, DataCapsule dc) {
         TreeMap<String, Long> temp = null;
         if (!uniqmap.containsKey(name)) {
-            temp = new TreeMap<String, Long>();
-            temp.put(dc.getData().toString().trim(), new Long(0));
+            temp = new TreeMap<>();
+            temp.put(dc.getData().toString().trim(), 0L);
             uniqmap.put(name, temp);
         } else {
             temp = uniqmap.get(name);
             if (temp.size() < uniqlimit) {
                 if (!temp.containsKey(dc.getData().toString().trim())) {
-                    temp.put(dc.getData().toString().trim(), new Long(1L));
+                    temp.put(dc.getData().toString().trim(), 1L);
                 } else {
                     Long l = temp.get(dc.getData().toString().trim());
                     l++;
@@ -184,21 +181,21 @@ public class FieldFrequency extends MonitorProcess {
     private void doPosNeg(String name, DataCapsule dc) {
         if (dc.getData() instanceof Number) {
             if (!negmap.containsKey(name)) {
-                negmap.put(name, new Long(0));
+                negmap.put(name, 0L);
             }
             if (!posmap.containsKey(name)) {
-                posmap.put(name, new Long(0));
+                posmap.put(name, 0L);
             }
 
             float temp = Float.parseFloat(dc.getData().toString());
             if (temp < 0.0) {
-                long foo = negmap.get(name).longValue();
+                long foo = negmap.get(name);
                 // System.out.println("neg count:"+foo);
-                negmap.put(name, new Long(foo + 1));
+                negmap.put(name, foo + 1);
             } else if (temp > 0.0) {
-                long foo = posmap.get(name).longValue();
+                long foo = posmap.get(name);
                 // System.out.println("pos count:"+foo);
-                posmap.put(name, new Long(foo + 1));
+                posmap.put(name, foo + 1);
             }
         }
 
@@ -238,11 +235,11 @@ public class FieldFrequency extends MonitorProcess {
     }
 
     private Long maxcount = 0L;
-    private TreeMap<String, TreeMap<String, Long>> uniqmap = new TreeMap<String, TreeMap<String, Long>>();
-    private TreeMap<String, Object> minmap = new TreeMap<String, Object>();
-    private TreeMap<String, Object> maxmap = new TreeMap<String, Object>();
-    private TreeMap<String, Long> negmap = new TreeMap<String, Long>();
-    private TreeMap<String, Long> posmap = new TreeMap<String, Long>();
+    private TreeMap<String, TreeMap<String, Long>> uniqmap = new TreeMap<>();
+    private TreeMap<String, Object> minmap = new TreeMap<>();
+    private TreeMap<String, Object> maxmap = new TreeMap<>();
+    private TreeMap<String, Long> negmap = new TreeMap<>();
+    private TreeMap<String, Long> posmap = new TreeMap<>();
     private ArrayList<String> names = null;
     private ArrayList<Long> counters = null;
     private int uniqlimit = 105;

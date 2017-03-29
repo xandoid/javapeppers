@@ -47,7 +47,7 @@ public class DataCapsule implements Serializable {
         setName(name);
         setData(data);
         setMetaData(AleppoConstants.ALEPPO_DC_MDATA_TYPE_KEY, type);
-        setMetaData(AleppoConstants.ALEPPO_DC_MDATA_LENGTH_KEY, new Integer(len));
+        setMetaData(AleppoConstants.ALEPPO_DC_MDATA_LENGTH_KEY, len);
     }
 
     /**
@@ -248,7 +248,7 @@ public class DataCapsule implements Serializable {
     private synchronized boolean putMetaData(String name, Object value) {
         if (name != null) {
             if (metadata == null) {
-                metadata = new HashMap<String, Object>();
+                metadata = new HashMap<>();
             }
             metadata.put(name, value);
         }

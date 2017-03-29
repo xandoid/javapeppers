@@ -20,7 +20,7 @@ public abstract class KeyedRecordParser extends FlowNode implements RecordParser
         boolean retval = false;
         if (s != null) {
             if (keyspecs == null) {
-                keyspecs = new ArrayList<KeySpecification>();
+                keyspecs = new ArrayList<>();
             }
             keyspecs.add(s);
             retval = true;
@@ -46,7 +46,7 @@ public abstract class KeyedRecordParser extends FlowNode implements RecordParser
         return retval;
     }
 
-    protected ArrayList<FieldSpecification> fields = new ArrayList<FieldSpecification>();
+    protected ArrayList<FieldSpecification> fields = new ArrayList<>();
 
     private ArrayList<KeySpecification> keyspecs = null;
 }

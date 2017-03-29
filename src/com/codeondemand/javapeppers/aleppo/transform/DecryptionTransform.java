@@ -71,13 +71,7 @@ public class DecryptionTransform extends RecordTransform {
                 KeyFactory kf = KeyFactory.getInstance("RSA");
                 retval = kf.generatePrivate(spec);
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

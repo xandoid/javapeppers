@@ -58,7 +58,7 @@ public class SendMail {
                 }
 
                 msg.setSubject(subject);
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 if (mailBodyTxt != null) {
                     sb.append(mailBodyTxt + "\n");
                 }
@@ -75,9 +75,6 @@ public class SendMail {
                             }
                         }
                         brdr.close();
-                    } catch (FileNotFoundException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -98,9 +95,6 @@ public class SendMail {
                 // Put parts in message
                 msg.setContent(multipart);
 
-            } catch (AddressException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             } catch (MessagingException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

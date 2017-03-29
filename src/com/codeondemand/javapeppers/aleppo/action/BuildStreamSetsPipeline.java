@@ -29,7 +29,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
             String filename = (String) pmap.get("file");
             File template = new File(filename);
             BufferedReader rdr = null;
-            StringBuffer temp = new StringBuffer();
+            StringBuilder temp = new StringBuilder();
             if (template.exists()) {
                 try {
                     rdr = new BufferedReader(new FileReader(template));
@@ -40,9 +40,6 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
                         }
                     }
                     rdr.close();
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -168,13 +165,13 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
 
     private String genQuery(RecordCapsule rc, boolean cast) {
         String retval = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String tbl_select_token = "";
         String tok_delim = ",";
         RecordCapsule f = (RecordCapsule) rc.getField("Field_data");
         int cnt = f.getFieldCount();
         if (pmap.containsKey("incl_tbl")) {
-            boolean incl_tbl = Boolean.valueOf((String) pmap.get("incl_tbl")).booleanValue();
+            boolean incl_tbl = Boolean.valueOf((String) pmap.get("incl_tbl"));
             if (incl_tbl) {
                 tbl_select_token = new String(tok_delim + "'" + rc.getField("TABLE_NAME").getData().toString() + "' as TBL_NAME");
             }

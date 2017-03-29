@@ -39,7 +39,7 @@ public class ShellProcess extends RecordProcessor {
         if (pmap.containsKey("command")) {
 
             // Create a list for adding the commands and arguments
-            ArrayList<String> args = new ArrayList<String>();
+            ArrayList<String> args = new ArrayList<>();
 
             // Put the basic command as the first argument in the list.
             // Save for logging purposes.

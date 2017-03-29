@@ -37,8 +37,6 @@ public class GZIPDataFileWriter extends SplitFileWriter {
                 }
                 logger.debug(AleppoMessages.getString("FileSourceReader.5")); //$NON-NLS-1$
 
-            } catch (FileNotFoundException fnfe) {
-                logger.error(fnfe.toString());
             } catch (IOException ioe) {
                 logger.error(ioe.toString());
             }

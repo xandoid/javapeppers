@@ -17,7 +17,7 @@ public class FieldStatistics extends MonitorProcess {
 
     public void done() {
         Iterator<String> i = stats.keySet().iterator();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (i.hasNext()) {
             String key = i.next().toString();
             sb.append("\nStatistics for " + key + "\n");
@@ -47,13 +47,12 @@ public class FieldStatistics extends MonitorProcess {
     }
 
     public boolean reset() {
-        Iterator<String> i = stats.keySet().iterator();
-        while (i.hasNext()) {
-            String key = i.next().toString();
+        for (String s : stats.keySet()) {
+            String key = s.toString();
             if (stats.get(key) instanceof SummaryStatistics) {
                 ((SummaryStatistics) stats.get(key)).clear();
             } else {
-                ((org.apache.commons.math3.stat.descriptive.DescriptiveStatistics) stats.get(key)).clear();
+                ((DescriptiveStatistics) stats.get(key)).clear();
             }
         }
         return true;
@@ -65,9 +64,9 @@ public class FieldStatistics extends MonitorProcess {
             DataCapsule dc = rc.getField(i);
             if (stats.containsKey(dc.getName()) && !dc.isNull()) {
                 if (stats.get(dc.getName()) instanceof SummaryStatistics) {
-                    ((SummaryStatistics) stats.get(dc.getName())).addValue(new Double(dc.getData().toString()).doubleValue());
+                    ((SummaryStatistics) stats.get(dc.getName())).addValue(new Double(dc.getData().toString()));
                 } else {
-                    ((DescriptiveStatistics) stats.get(dc.getName())).addValue(new Double(dc.getData().toString()).doubleValue());
+                    ((DescriptiveStatistics) stats.get(dc.getName())).addValue(new Double(dc.getData().toString()));
                 }
             }
         }
@@ -98,5 +97,5 @@ public class FieldStatistics extends MonitorProcess {
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("FieldStatistics");
 
-    protected TreeMap<String, Object> stats = new TreeMap<String, Object>();
+    protected TreeMap<String, Object> stats = new TreeMap<>();
 }

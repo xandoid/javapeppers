@@ -54,7 +54,7 @@ public class ExcelEventReader extends SourceReader implements FilenameFilter, Ob
             Iterator<Integer> it = colList.iterator();
             int idx = 0;
             while (it.hasNext()) {
-                int i = it.next().intValue();
+                int i = it.next();
                 String value = "";
                 if (row[i] != null) {
                     value = row[i].toString();
@@ -133,8 +133,8 @@ public class ExcelEventReader extends SourceReader implements FilenameFilter, Ob
             }
 
             if (props.getProperty(pfx + "col.list") != null) {
-                colList = new ArrayList<Integer>();
-                colNames = new ArrayList<String>();
+                colList = new ArrayList<>();
+                colNames = new ArrayList<>();
                 String temp = props.getProperty(pfx + "col.list");
                 StringTokenizer foo = new StringTokenizer(temp, "|");
                 while (foo.hasMoreTokens()) {

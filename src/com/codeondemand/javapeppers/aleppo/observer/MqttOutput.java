@@ -25,8 +25,6 @@ public class MqttOutput extends NullObserver {
                 mqtt_pub.disconnect();
                 retval = true;
             }
-        } catch (MqttPersistenceException e) {
-            logger.error(e.toString());
         } catch (MqttException e) {
             logger.error(e.toString());
         }

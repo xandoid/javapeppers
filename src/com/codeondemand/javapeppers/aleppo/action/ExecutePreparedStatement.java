@@ -16,7 +16,7 @@ public class ExecutePreparedStatement extends RecordProcessor {
 
     @Override
     public RecordCapsule processRecord(RecordCapsule input) {
-        ArrayList<String> params = new ArrayList<String>();
+        ArrayList<String> params = new ArrayList<>();
         for (String field : fields) {
             params.add("%" + input.getField(field).getData().toString() + "%");
         }
@@ -94,7 +94,7 @@ public class ExecutePreparedStatement extends RecordProcessor {
                 input.getField(output.get(0)).setData(rs.getString(1));
                 input.getField(output.get(1)).setData(rs.getString(2));
                 if (rs.next()) {
-                    StringBuffer sb = new StringBuffer();
+                    StringBuilder sb = new StringBuilder();
                     do {
                         sb.append(rs.getString(1) + ":" + rs.getString(2) + "|");
                     } while (rs.next());
@@ -124,8 +124,8 @@ public class ExecutePreparedStatement extends RecordProcessor {
     protected String proc = null;
     protected PreparedStatement stmt = null;
     protected String keypfx = null;
-    protected ArrayList<String> fields = new ArrayList<String>();
-    protected ArrayList<String> output = new ArrayList<String>();
+    protected ArrayList<String> fields = new ArrayList<>();
+    protected ArrayList<String> output = new ArrayList<>();
 
     @Override
     public void done() {

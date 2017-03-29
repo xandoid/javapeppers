@@ -68,7 +68,7 @@ public class JSONParser extends NullRecordParser {
     }
 
 
-    private ArrayList<String> fieldList = new ArrayList<String>();
+    private ArrayList<String> fieldList = new ArrayList<>();
     private String outputField = null;
     private boolean doTS = false;
     private boolean initialized = false;

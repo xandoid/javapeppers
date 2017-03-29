@@ -26,7 +26,7 @@ public class XMLDataSourceReader extends DBSourceReader {
         boolean value = super.initialize(dbcon, dbquery);
 
         if (pmap.containsKey("key_fields")) {
-            keys = new HashSet<String>();
+            keys = new HashSet<>();
             StringTokenizer st = new StringTokenizer((String) pmap.get("key_fields"), "|");
             while (st.hasMoreTokens()) {
                 keys.add(st.nextToken());

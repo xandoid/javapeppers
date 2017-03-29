@@ -94,7 +94,7 @@ public class KeyedAggregateSource extends AggregateSource {
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("KeyedAggregateSource");
 
-    private HashMap<Integer, RecordCapsule> hdrs = new HashMap<Integer, RecordCapsule>();
-    private HashMap<Integer, RecordCapsule> recs = new HashMap<Integer, RecordCapsule>();
+    private HashMap<Integer, RecordCapsule> hdrs = new HashMap<>();
+    private HashMap<Integer, RecordCapsule> recs = new HashMap<>();
     private RecordCapsule currentRecord = null;
 }

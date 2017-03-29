@@ -43,9 +43,6 @@ public class ExcelReaderEventModel extends Observable implements HSSFListener, R
             // create our event factory
             factory = new HSSFEventFactory();
 
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -97,7 +94,7 @@ public class ExcelReaderEventModel extends Observable implements HSSFListener, R
             }
         }
 
-        if (slist.contains(new Integer(sheetcount))) {
+        if (slist.contains(sheetcount)) {
             // System.out.println( "sid: "+ record.getSid());
             switch (record.getSid()) {
                 // the BOFRecord can represent either the beginning of a sheet or
@@ -214,7 +211,7 @@ public class ExcelReaderEventModel extends Observable implements HSSFListener, R
         lastColumn = col;
     }
 
-    private ArrayList<Integer> slist = new ArrayList<Integer>();
+    private ArrayList<Integer> slist = new ArrayList<>();
     private int sheetcount = 0;
     private int startRow = 0;
     private int rowcount = 0;

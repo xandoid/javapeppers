@@ -20,7 +20,7 @@ public class MiscUtil {
     private static Base64 secondCodec = new Base64(false);
     private static Hex hexCodec = new Hex();
 
-    private static HashMap<Character, Character> map = new HashMap<Character, Character>();
+    private static HashMap<Character, Character> map = new HashMap<>();
     private static MessageDigest mMessageDigest = null;
 
     /**
@@ -196,7 +196,7 @@ public class MiscUtil {
 
                 try (java.io.InputStream sqlcfg = foo.openStream()) {
                     try (BufferedReader sqlrdr = new BufferedReader(new java.io.InputStreamReader(sqlcfg))) {
-                        StringBuffer querysb = new StringBuffer();
+                        StringBuilder querysb = new StringBuilder();
                         while (sqlrdr.ready()) {
                             String temp = sqlrdr.readLine();
                             if (temp != null) {
@@ -235,7 +235,7 @@ public class MiscUtil {
         ArrayList<String> ret = null;
         try (java.io.InputStream sqlcfg = ClassLoader.getSystemResource(filename).openStream()) {
             try (BufferedReader sqlrdr = new BufferedReader(new java.io.InputStreamReader(sqlcfg))) {
-                ret = new ArrayList<String>(size);
+                ret = new ArrayList<>(size);
                 while (sqlrdr.ready()) {
                     String temp = sqlrdr.readLine();
                     if (temp != null) {
@@ -375,7 +375,7 @@ public class MiscUtil {
         ArrayList<String> retval = null;
         StringTokenizer stok = new StringTokenizer(input, delim);
         if (stok.hasMoreTokens()) {
-            retval = new ArrayList<String>();
+            retval = new ArrayList<>();
             while (stok.hasMoreTokens()) {
                 retval.add(stok.nextToken().trim());
             }

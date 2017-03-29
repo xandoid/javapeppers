@@ -68,7 +68,7 @@ public class XSLTTransform extends RecordTransform {
                 }
             }
             if (pmap.containsKey(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_TOKENIZE)) {
-                tokenize = Boolean.valueOf((String) pmap.get(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_TOKENIZE)).booleanValue();
+                tokenize = Boolean.valueOf((String) pmap.get(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_TOKENIZE));
                 logger.debug("Setting tokenize to " + tokenize);
             }
         }
@@ -145,7 +145,7 @@ public class XSLTTransform extends RecordTransform {
     protected DocumentBuilder db = null;
     protected XsltTransformer xformer = null;
     private XdmNode docnode = null;
-    private ArrayList<String> names = new ArrayList<String>(1);
+    private ArrayList<String> names = new ArrayList<>(1);
     private boolean tokenize = false;
     net.sf.saxon.s9api.Processor p = null;
 

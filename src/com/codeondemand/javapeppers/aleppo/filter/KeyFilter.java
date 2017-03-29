@@ -67,7 +67,7 @@ public class KeyFilter extends RecordFilter {
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("KeyFilter");
 
-    protected TreeMap<String, Integer> keys = new TreeMap<String, Integer>();
+    protected TreeMap<String, Integer> keys = new TreeMap<>();
 
     @Override
     public void done() {

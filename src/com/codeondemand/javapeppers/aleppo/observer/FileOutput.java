@@ -85,8 +85,6 @@ public class FileOutput extends NullObserver {
                         + AleppoMessages.getString("FileRecordDestination.6") + append); //$NON-NLS-1$
 
                 retval = true;
-            } catch (FileNotFoundException fnfe) {
-                logger.error(fnfe.toString());
             } catch (IOException ioe) {
                 logger.error(ioe.toString());
             }

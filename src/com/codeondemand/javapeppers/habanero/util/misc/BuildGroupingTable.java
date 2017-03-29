@@ -50,11 +50,11 @@ public class BuildGroupingTable {
             ArrayList<String> list1 = associationTbl.get(id1);
             ArrayList<String> list2 = associationTbl.get(id2);
             if (list1 == null) {
-                list1 = new ArrayList<String>();
+                list1 = new ArrayList<>();
                 associationTbl.put(id1, list1);
             }
             if (list2 == null) {
-                list2 = new ArrayList<String>();
+                list2 = new ArrayList<>();
                 associationTbl.put(id2, list2);
             }
 
@@ -94,10 +94,8 @@ public class BuildGroupingTable {
 
         HashSet<String> currentSet = null;
         groupMap.clear();
-        Iterator<String> it = associationTbl.keySet().iterator();
-        while (it.hasNext()) {
-            String id = it.next();
-            currentSet = new HashSet<String>();
+        for (String id : associationTbl.keySet()) {
+            currentSet = new HashSet<>();
             if (!processed.contains(id)) {
                 group++;
                 currentSet.add(id);
@@ -122,9 +120,7 @@ public class BuildGroupingTable {
     private void processGroup(String idin, HashSet<String> currentSet) {
         ArrayList<String> list = associationTbl.get(idin);
         if (list != null) {
-            Iterator<String> it = list.iterator();
-            while (it.hasNext()) {
-                String id = it.next();
+            for (String id : list) {
                 currentSet.add(id);
                 if (!processed.contains(id)) {
                     processed.add(id);
@@ -134,10 +130,10 @@ public class BuildGroupingTable {
         }
     }
 
-    private HashMap<String, ArrayList<String>> associationTbl = new HashMap<String, ArrayList<String>>();
-    private TreeMap<Integer, HashSet<String>> groupMap = new TreeMap<Integer, HashSet<String>>();
+    private HashMap<String, ArrayList<String>> associationTbl = new HashMap<>();
+    private TreeMap<Integer, HashSet<String>> groupMap = new TreeMap<>();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("BuildGroupingTable");
 
-    private HashSet<String> processed = new HashSet<String>();
+    private HashSet<String> processed = new HashSet<>();
 }

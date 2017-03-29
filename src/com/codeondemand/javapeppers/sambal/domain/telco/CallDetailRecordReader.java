@@ -95,10 +95,10 @@ public class CallDetailRecordReader extends SourceReader {
         return retval;
     }
 
-    private ArrayList<String> country_codes = new ArrayList<String>();
-    private ArrayList<String> area_codes = new ArrayList<String>();
-    private ArrayList<String> prefix_codes = new ArrayList<String>();
-    private ArrayList<String> type_codes = new ArrayList<String>();
+    private ArrayList<String> country_codes = new ArrayList<>();
+    private ArrayList<String> area_codes = new ArrayList<>();
+    private ArrayList<String> prefix_codes = new ArrayList<>();
+    private ArrayList<String> type_codes = new ArrayList<>();
     private int number_length = 10;
     private Random rangen = new Random();
     private String delimiter = "|";

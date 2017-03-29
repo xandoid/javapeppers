@@ -6,7 +6,6 @@ package com.codeondemand.javapeppers.aleppo.common;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * The RecordCapsule class is the container for the basic unit of work for the
@@ -69,7 +68,7 @@ public class RecordCapsule extends DataCapsule {
      * @return A String representation of the key for this RecordCapsule.
      */
     public String getKeyString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (KeySpecification key : keys) {
             int pos = key.getField_position();
             DataCapsule dc = fields.get(pos);
@@ -252,12 +251,10 @@ public class RecordCapsule extends DataCapsule {
      * <delimiter> <linefeed>.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("RecordCapsule:" + name + "\n");
-        Iterator<DataCapsule> it = fields.iterator();
-        while (it.hasNext()) {
-            DataCapsule foo = it.next();
+        for (DataCapsule foo : fields) {
             String name = foo.getName();
             while (name.length() < 20) {
                 name = name + " ";
@@ -309,6 +306,6 @@ public class RecordCapsule extends DataCapsule {
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("RecordCapsule");
 
-    protected ArrayList<KeySpecification> keys = new ArrayList<KeySpecification>();
-    protected ArrayList<DataCapsule> fields = new ArrayList<DataCapsule>();
+    protected ArrayList<KeySpecification> keys = new ArrayList<>();
+    protected ArrayList<DataCapsule> fields = new ArrayList<>();
 }

@@ -36,8 +36,6 @@ public class GZipDataFileReader extends FileSourceReader {
                 } else {
                     logger.error(AleppoMessages.getString("FileSourceReader.6") + file.getAbsolutePath()); //$NON-NLS-1$
                 }
-            } catch (FileNotFoundException fnfe) {
-                logger.error(fnfe.toString());
             } catch (IOException ioe) {
                 logger.error(ioe.toString());
             }

@@ -59,7 +59,7 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
                         Iterator<Integer> it = colList.iterator();
                         int idx = 0;
                         while (it.hasNext()) {
-                            int i = it.next().intValue();
+                            int i = it.next();
                             CellValue data = null;
                             HSSFCell c = row.getCell(i);
                             String value = "";
@@ -119,9 +119,8 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
         if (exitTest == null) {
             if (!colList.isEmpty()) {
                 boolean allempty = true;
-                Iterator<Integer> it = colList.iterator();
-                while (it.hasNext()) {
-                    if (row.getCell(it.next()) != null) {
+                for (Integer aColList : colList) {
+                    if (row.getCell(aColList) != null) {
                         allempty = false;
                     }
                 }
@@ -206,8 +205,8 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
                 }
 
                 if (props.getProperty(pfx + "col.list") != null) {
-                    colList = new ArrayList<Integer>();
-                    colNames = new ArrayList<String>();
+                    colList = new ArrayList<>();
+                    colNames = new ArrayList<>();
                     String temp = props.getProperty(pfx + "col.list");
                     StringTokenizer foo = new StringTokenizer(temp, "|");
                     while (foo.hasMoreTokens()) {
@@ -222,9 +221,6 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
                     skipEmpty = Boolean.parseBoolean(props.getProperty(pfx + "skip.empty.rows"));
                 }
 
-            } catch (FileNotFoundException e) {
-                retval = false;
-                logger.error(e.toString());
             } catch (IOException e) {
                 retval = false;
                 logger.error(e.toString());

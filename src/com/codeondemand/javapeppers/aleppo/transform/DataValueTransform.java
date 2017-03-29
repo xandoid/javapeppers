@@ -12,7 +12,6 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
 
@@ -48,9 +47,7 @@ public class DataValueTransform extends RecordTransform {
     @Override
     public RecordCapsule doTransform(RecordCapsule input) {
         if (initialized) {
-            Iterator<String> it = tables.keySet().iterator();
-            while (it.hasNext()) {
-                String tag = it.next();
+            for (String tag : tables.keySet()) {
                 DataCapsule dc = null;
                 if ((dc = input.getField(tag)) != null) {
                     logger.debug("Found a map for tag:" + tag);
@@ -106,7 +103,7 @@ public class DataValueTransform extends RecordTransform {
                             temp.put(name, value);
                             logger.debug("Adding k/v pair for key: " + key + ":" + name + ":" + value);
                         } else {
-                            TreeMap<String, String> temp = new TreeMap<String, String>();
+                            TreeMap<String, String> temp = new TreeMap<>();
                             temp.put(name, value);
                             logger.debug("Adding map for key:" + key);
                             tables.put(key, temp);
@@ -124,7 +121,7 @@ public class DataValueTransform extends RecordTransform {
     }
 
     private boolean initialized = false;
-    private TreeMap<String, TreeMap<String, String>> tables = new TreeMap<String, TreeMap<String, String>>();
+    private TreeMap<String, TreeMap<String, String>> tables = new TreeMap<>();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("DataValueTransform");
 

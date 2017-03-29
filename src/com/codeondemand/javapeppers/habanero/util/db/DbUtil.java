@@ -31,14 +31,14 @@ public class DbUtil {
 
         TreeMap<String, Integer> retval = null;
         if (rsmd != null) {
-            retval = new TreeMap<String, Integer>();
+            retval = new TreeMap<>();
 
             try {
                 int c = rsmd.getColumnCount();
                 for (int i = 1; i <= c; i++) {
                     int type = rsmd.getColumnType(i);
                     String name = rsmd.getColumnName(i);
-                    retval.put(name, new Integer(type));
+                    retval.put(name, type);
                 }
             } catch (SQLException e) {
                 logger.error(e.toString());
@@ -52,14 +52,14 @@ public class DbUtil {
         logger.debug("Building a scale table for the result set columns");
         TreeMap<String, Integer> retval = null;
         if (rsmd != null) {
-            retval = new TreeMap<String, Integer>();
+            retval = new TreeMap<>();
 
             try {
                 int c = rsmd.getColumnCount();
                 for (int i = 1; i <= c; i++) {
                     int scale = rsmd.getScale(i);
                     String name = rsmd.getColumnName(i);
-                    retval.put(name, new Integer(scale));
+                    retval.put(name, scale);
                     logger.debug("Setting scale for " + name + " to " + scale);
                 }
             } catch (SQLException e) {
@@ -74,14 +74,14 @@ public class DbUtil {
         logger.debug("Building a size table for the result set columns");
         TreeMap<String, Integer> retval = null;
         if (rsmd != null) {
-            retval = new TreeMap<String, Integer>();
+            retval = new TreeMap<>();
 
             try {
                 int c = rsmd.getColumnCount();
                 for (int i = 1; i <= c; i++) {
                     int length = rsmd.getPrecision(i);
                     String name = rsmd.getColumnName(i);
-                    retval.put(name, new Integer(length));
+                    retval.put(name, length);
                     logger.debug("Setting length for " + name + " to " + length);
                 }
             } catch (SQLException e) {
@@ -104,7 +104,7 @@ public class DbUtil {
 
         TreeMap<String, String> retval = null;
         if (rsmd != null) {
-            retval = new TreeMap<String, String>();
+            retval = new TreeMap<>();
 
             try {
                 int c = rsmd.getColumnCount();

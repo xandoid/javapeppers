@@ -339,9 +339,7 @@ public class RecordConnector extends FlowNode implements Runnable {
                 logger.debug(AleppoMessages.getString("RecordConnector.22")); //$NON-NLS-1$
                 // Add all the current environment variables to the properties.
                 Map<String, String> sysenv = System.getenv();
-                Iterator<String> siterator = sysenv.keySet().iterator();
-                while (siterator.hasNext()) {
-                    String key = siterator.next();
+                for (String key : sysenv.keySet()) {
                     String value = sysenv.get(key);
                     props.setProperty(key, value);
                 }
@@ -385,9 +383,8 @@ public class RecordConnector extends FlowNode implements Runnable {
 
         if (recin.getMetaData(AleppoConstants.ALEPPO_DC_MDATA_PROPERTIES_KEY) != null) {
             Properties temp = (Properties) recin.getMetaData(AleppoConstants.ALEPPO_DC_MDATA_PROPERTIES_KEY);
-            Iterator<Object> it = props.keySet().iterator();
-            while (it.hasNext()) {
-                String key = (String) it.next();
+            for (Object o : props.keySet()) {
+                String key = (String) o;
                 temp.put(key, props.get(key));
             }
         } else {
@@ -403,7 +400,7 @@ public class RecordConnector extends FlowNode implements Runnable {
         moveAll();
         //close();
         setChanged();
-        notifyObservers(new Long(delivered));
+        notifyObservers(delivered);
     }
 
     private long maxrows = Long.MAX_VALUE;
@@ -411,13 +408,13 @@ public class RecordConnector extends FlowNode implements Runnable {
     //protected Properties props = null;
     private Random rangen = new Random();
     private AbstractRecordSource src = null;
-    private Vector<RecordDestination> dst = new Vector<RecordDestination>();
+    private Vector<RecordDestination> dst = new Vector<>();
     // private RecordFilter filt = null;
     private long moved = 0L;
     private long delivered = 0L;
     private boolean doHeader = false;
-    Vector<RecordProcessor> processors = new Vector<RecordProcessor>();
-    Vector<Object> observers = new Vector<Object>();
+    Vector<RecordProcessor> processors = new Vector<>();
+    Vector<Object> observers = new Vector<>();
     private int split_index = 0;
 
     private int mode = CONNECT_MODE_DUPLICATE;

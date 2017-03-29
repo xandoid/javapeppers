@@ -21,7 +21,7 @@ public class SpecificationBuilder extends NullBuilder {
             int start = 1;
             int pos = 1;
             String temp = ""; //$NON-NLS-1$
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < rc.getFieldCount(); i++) {
                 DataCapsule dc = rc.getField(i);
 

@@ -73,7 +73,7 @@ public class JSONBuilder extends NullBuilder {
     }
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("JSONBuilder");
-    private ArrayList<String> fieldList = new ArrayList<String>();
+    private ArrayList<String> fieldList = new ArrayList<>();
     private String outputField = null;
     private boolean doTS = false;
 

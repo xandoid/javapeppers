@@ -22,7 +22,7 @@ public class FlowCountMonitor extends MonitorProcess {
         long current_time = new GregorianCalendar().getTimeInMillis();
         double elapsed_time_sec = (current_time - start_time) / 1000.0;
         if (decimals) {
-            System.out.println(name + ":" + new Double((getRecordCount() + 1) / elapsed_time_sec) + ":" + (getRecordCount() + 1));
+            System.out.println(name + ":" + (getRecordCount() + 1) / elapsed_time_sec + ":" + (getRecordCount() + 1));
 
         } else {
             System.out.println(new Double((getRecordCount() + 1) / elapsed_time_sec).longValue() + ":" + (getRecordCount() + 1));
@@ -60,8 +60,8 @@ public class FlowCountMonitor extends MonitorProcess {
             double interval_time_sec = (current_time - interval_time) / 1000.0;
             double tot_time_sec = (current_time - start_time) / 1000.0;
             Long cnt = getRecordCount() + 1;
-            Double intervalPerSec = new Double(interval) / new Double(interval_time_sec);
-            Double totPerSec = new Double(cnt) / new Double(tot_time_sec);
+            Double intervalPerSec = (double) interval / interval_time_sec;
+            Double totPerSec = new Double(cnt) / tot_time_sec;
             if (decimals) {
                 showCount(name, cnt, String.valueOf(totPerSec), String.valueOf(intervalPerSec));
             } else {

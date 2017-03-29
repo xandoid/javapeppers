@@ -28,9 +28,6 @@ public class RecordFile {
                 eof = false;
                 readNextLine();
             }
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-            System.exit(1);
         } catch (IOException ioe) {
             ioe.printStackTrace();
             System.exit(1);

@@ -15,7 +15,7 @@ public class FieldDecoder extends RecordTransform {
         if (field != null && input.getField(field) != null && !input.getField(field).isNull()) {
             String foo = input.getField(field).getData().toString();
             String bar = MiscUtil.decodeSimpleB64String(foo);
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             ByteArrayInputStream bais = new ByteArrayInputStream(bar.getBytes());
             try {
                 int sChunk = 16378;

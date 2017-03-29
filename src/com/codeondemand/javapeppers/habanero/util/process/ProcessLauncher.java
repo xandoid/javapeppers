@@ -139,16 +139,16 @@ public abstract class ProcessLauncher extends Observable implements Observer {
      */
     public synchronized void update(Observable o, Object arg) {
 
-        StringBuffer sbuff = new StringBuffer("Total process time:");
+        StringBuilder sbuff = new StringBuilder("Total process time:");
         long endTime = new java.util.Date().getTime();
         if ((endTime - startTime) < 1000 * 60) {
-            Double temp = new Double((endTime - startTime) / 1000);
+            Double temp = (double) ((endTime - startTime) / 1000);
             double cumtime = temp.longValue() / 100;
             sbuff.append(" " + cumtime + " seconds ");
         } else if (endTime - startTime < (1000 * 3600)) {
             sbuff.append(" " + (endTime - startTime) / (1000 * 3600) + " minutes ");
         } else {
-            Double temp = new Double((endTime - startTime) / 600.0);
+            Double temp = (endTime - startTime) / 600.0;
             double cumtime = temp.longValue() / 100.0;
             sbuff.append(" " + cumtime + " hours.");
         }

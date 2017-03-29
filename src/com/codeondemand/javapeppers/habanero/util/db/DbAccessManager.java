@@ -133,7 +133,7 @@ public class DbAccessManager {
                 e2.printStackTrace();
             }
         } else {
-            connectionQueue = new ConcurrentLinkedQueue<Connection>();
+            connectionQueue = new ConcurrentLinkedQueue<>();
             try {
                 Connection temp = null;
                 for (int i = 0; i < connectionCount; i++) {
@@ -210,7 +210,7 @@ public class DbAccessManager {
 
     private int connectionCount = 5;
     private String urlString = null;
-    private HashMap<String, ConcurrentLinkedQueue<Connection>> connectionTable = new HashMap<String, ConcurrentLinkedQueue<Connection>>();
+    private HashMap<String, ConcurrentLinkedQueue<Connection>> connectionTable = new HashMap<>();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("DbAccessManager");
 

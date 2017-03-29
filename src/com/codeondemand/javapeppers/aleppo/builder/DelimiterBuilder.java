@@ -69,7 +69,7 @@ public class DelimiterBuilder extends NullBuilder {
                 logger.debug(buildHeader(r));
                 headerbuilt = true;
             }
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(prefix);
             for (int i = 0; i < r.getFieldCount(); i++) {
                 if (i > 0) {
@@ -85,7 +85,7 @@ public class DelimiterBuilder extends NullBuilder {
     }
 
     public Object buildHeader(RecordCapsule r) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String temp = ""; //$NON-NLS-1$
         if (do_ts) {
             sb.append("timestamp" + delimiter);

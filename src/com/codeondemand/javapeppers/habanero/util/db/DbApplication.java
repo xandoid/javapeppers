@@ -16,7 +16,7 @@ public class DbApplication extends LoginApplication {
         dburl = getProperty("db.url");
         dbdriver = getProperty("db.driver");
 
-        conn_count = Integer.valueOf(getProperty("connection.count")).intValue();
+        conn_count = Integer.valueOf(getProperty("connection.count"));
 
         if (dburl == null || dbdriver == null) {
             // Create a database access manager

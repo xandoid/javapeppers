@@ -43,7 +43,7 @@ public class KafkaWriter extends DestinationWriter {
             if (rc.getField(msgfield) != null && !rc.getField(msgfield).isNull()) {
                 msg = rc.getField(msgfield).getData().toString();
             }
-            ProducerRecord<String, String> message = new ProducerRecord<String, String>(topic, key, msg);
+            ProducerRecord<String, String> message = new ProducerRecord<>(topic, key, msg);
 
             logger.debug("Sending: " + message);
             kprod.send(message);
@@ -81,7 +81,7 @@ public class KafkaWriter extends DestinationWriter {
             p.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerlist);
             p.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
             p.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-            kprod = new KafkaProducer<String, String>(p);
+            kprod = new KafkaProducer<>(p);
         }
         return retval;
     }

@@ -27,9 +27,8 @@ public class MqttMuxWriter extends DestinationWriter {
     @Override
     public boolean close() {
         boolean retval = false;
-        Iterator<String> it = pubmap.keySet().iterator();
-        while (it.hasNext()) {
-            MqttPublisherThread mqtt_pub = pubmap.get(it.next());
+        for (String s : pubmap.keySet()) {
+            MqttPublisherThread mqtt_pub = pubmap.get(s);
             if (mqtt_pub != null) {
                 mqtt_pub.setFinished();
 
@@ -76,7 +75,7 @@ public class MqttMuxWriter extends DestinationWriter {
                 ArrayList<String> list = MiscUtil.StringToList(fields, "|");
                 if (list.size() > 1) {
                     Iterator<String> it = list.iterator();
-                    StringBuffer foo = new StringBuffer();
+                    StringBuilder foo = new StringBuilder();
                     while (it.hasNext()) {
                         String field = it.next();
                         String temp = ((RecordCapsule) data).getField(field).getData().toString();
@@ -94,7 +93,7 @@ public class MqttMuxWriter extends DestinationWriter {
             } else {
                 if (data instanceof RecordCapsule) {
                     RecordCapsule temp = (RecordCapsule) data;
-                    StringBuffer foo = new StringBuffer();
+                    StringBuilder foo = new StringBuilder();
                     for (int i = 0; i < temp.getFieldCount(); i++) {
                         if (!temp.getField(i).isNull()) {
                             foo.append(temp.getField(i).getData().toString() + "|");
@@ -191,7 +190,7 @@ public class MqttMuxWriter extends DestinationWriter {
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("MqttMuxWriter");
 
-    protected TreeMap<String, MqttPublisherThread> pubmap = new TreeMap<String, MqttPublisherThread>();
+    protected TreeMap<String, MqttPublisherThread> pubmap = new TreeMap<>();
 
     protected byte[] bqos = new byte[1];
     protected String[] topics = new String[1];

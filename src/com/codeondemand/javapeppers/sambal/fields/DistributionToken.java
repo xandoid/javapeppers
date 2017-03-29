@@ -28,10 +28,10 @@ public class DistributionToken extends TokenField {
 
         switch (type) {
             case TokenField.GAUSSIAN_DBL_TOKEN:
-                current_value = new Double(UtilityGenerator.generateRandomGaussian(mean, stddev, invert, add_noise, min, max));
+                current_value = UtilityGenerator.generateRandomGaussian(mean, stddev, invert, add_noise, min, max);
                 break;
             case TokenField.GAUSSIAN_INT_TOKEN:
-                current_value = new Integer(UtilityGenerator.generateRandomGaussianInteger(mean, stddev, invert, add_noise, min, max));
+                current_value = UtilityGenerator.generateRandomGaussianInteger(mean, stddev, invert, add_noise, min, max);
                 break;
             default:
                 current_value = null;

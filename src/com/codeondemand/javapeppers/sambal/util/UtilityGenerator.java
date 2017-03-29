@@ -33,7 +33,7 @@ public class UtilityGenerator {
      * @return A String representation of a number.
      */
     public static String generateFloatingPointNumber(int left, int right, String decsep) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         if (left > 0) {
             sb.append(generateRandomDigitString(left, false));
@@ -54,7 +54,7 @@ public class UtilityGenerator {
      * @return A String with randomly mixed characters and digits.
      */
     public static String generateRandomAlphaNumericString(int length) {
-        StringBuffer sbuff = new StringBuffer(length);
+        StringBuilder sbuff = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sbuff.append(alphanumeric[rangen.nextInt(alphanumeric.length)]);
         }
@@ -69,7 +69,7 @@ public class UtilityGenerator {
      * @return An IPv4 internet address.
      */
     public static String generateIP(String a, String b, String c, String d) {
-        StringBuffer sbuff = new StringBuffer(20);
+        StringBuilder sbuff = new StringBuilder(20);
         if (a != null) {
             sbuff.append(a);
         } else {
@@ -190,7 +190,7 @@ public class UtilityGenerator {
      * @return A random string of digits, optionally with leading zeroes.
      */
     public static String generateRandomDigitString(int length, boolean hasLeadingZeroes) {
-        StringBuffer sbuff = new StringBuffer(length);
+        StringBuilder sbuff = new StringBuilder(length);
 
         int firstposadj = 0;
         if (!hasLeadingZeroes) {
@@ -215,7 +215,7 @@ public class UtilityGenerator {
      * string.
      */
     public static String generateNationalIdNumber(String country) {
-        StringBuffer sbuff = new StringBuffer(20);
+        StringBuilder sbuff = new StringBuilder(20);
 
         if (country == null) {
             sbuff.append(generateRandomAlphaNumericString(10));
@@ -251,7 +251,7 @@ public class UtilityGenerator {
      * allowed characters.
      */
     public static String sampleCharacters(int length, char[] allowed) {
-        StringBuffer sbuff = new StringBuffer(length);
+        StringBuilder sbuff = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sbuff.append(allowed[rangen.nextInt(allowed.length)]);
         }
@@ -270,7 +270,7 @@ public class UtilityGenerator {
      * @return A String representation of a number formatted as requested.
      */
     public static String generateRandomNumericString(int length, int prec, String delim, String decsep) {
-        StringBuffer sbuff = new StringBuffer(length);
+        StringBuilder sbuff = new StringBuilder(length);
 
         // Determine how many digits to skip before putting the first delimiter
         int skip = 0;
@@ -309,7 +309,7 @@ public class UtilityGenerator {
      * @see #sampleCharacters
      */
     public static String generateRandomAlphaString(int length) {
-        StringBuffer sbuff = new StringBuffer(length);
+        StringBuilder sbuff = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sbuff.append(alphanumeric[rangen.nextInt(26)]);
         }

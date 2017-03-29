@@ -55,7 +55,7 @@ public class UIDisplay extends UIRecordWriter implements ActionListener {
             datafields[i] = new JTextField();
             datafields[i].setEditable(false);
             if (dc.getMetaData("length") != null) {
-                int foo = new Integer(dc.getMetaData("length").toString()).intValue();
+                int foo = new Integer(dc.getMetaData("length").toString());
                 foo = Math.min(foo, 50);
                 datafields[i].setColumns(foo);
             } else {
@@ -68,8 +68,8 @@ public class UIDisplay extends UIRecordWriter implements ActionListener {
         }
 
         if (rc.getMetaData("xlocation") != null && rc.getMetaData("ylocation") != null) {
-            int x = new Integer(rc.getMetaData("xlocation").toString()).intValue();
-            int y = new Integer(rc.getMetaData("ylocation").toString()).intValue();
+            int x = new Integer(rc.getMetaData("xlocation").toString());
+            int y = new Integer(rc.getMetaData("ylocation").toString());
             frame.setLocation(x, y);
         } else {
             frame.setLocation(200, 200);

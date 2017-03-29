@@ -72,7 +72,7 @@ public class RecordLoadLauncher extends UtlRunnable implements Observer {
     }
 
     protected void orderInputFiles(File[] filelist) {
-        fileq = new LinkedList<RecordFile>();
+        fileq = new LinkedList<>();
         for (File aFilelist : filelist) {
             fileq.add(new RecordFile(aFilelist.getAbsolutePath()));
         }
@@ -91,7 +91,7 @@ public class RecordLoadLauncher extends UtlRunnable implements Observer {
     public synchronized void update(Observable o, Object arg) {
         total_count = ((Long) arg).intValue();
         endTime = new java.util.Date().getTime();
-        Double temp = new Double((endTime - startTime) / 600.0);
+        Double temp = (endTime - startTime) / 600.0;
         double cumtime = temp.longValue() / 100.0;
 
         logger.info("Total records processed: " + total_count);

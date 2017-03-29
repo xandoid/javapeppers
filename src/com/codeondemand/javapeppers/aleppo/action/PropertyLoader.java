@@ -6,7 +6,6 @@ import com.codeondemand.javapeppers.aleppo.common.RecordProcessor;
 import com.codeondemand.javapeppers.habanero.util.misc.MiscUtil;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.Iterator;
 import java.util.Properties;
 
 /**
@@ -24,9 +23,8 @@ public class PropertyLoader extends RecordProcessor {
             // the values read from this process node.
             if (input.getMetaData(AleppoConstants.ALEPPO_DC_MDATA_PROPERTIES_KEY) != null) {
                 Properties temp = (Properties) input.getMetaData(AleppoConstants.ALEPPO_DC_MDATA_PROPERTIES_KEY);
-                Iterator<Object> it = props.keySet().iterator();
-                while (it.hasNext()) {
-                    String key = (String) it.next();
+                for (Object o : props.keySet()) {
+                    String key = (String) o;
                     temp.put(key, props.get(key));
                 }
             } else {
@@ -45,9 +43,8 @@ public class PropertyLoader extends RecordProcessor {
 
             // This just logs the properties that are being loaded.
             if (props != null) {
-                Iterator<Object> it = props.keySet().iterator();
-                while (it.hasNext()) {
-                    String key = (String) it.next();
+                for (Object o : props.keySet()) {
+                    String key = (String) o;
                     logger.debug("property " + key + " = " + props.getProperty(key));
                 }
                 retval = true;

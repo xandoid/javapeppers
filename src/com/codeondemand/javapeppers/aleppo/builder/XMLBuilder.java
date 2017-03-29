@@ -52,7 +52,7 @@ public class XMLBuilder extends NullBuilder {
         String retval = null;
 
         if (rc != null) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             if (doPreamble) {
                 sb.append(writeXMLPreamble());
             }
@@ -100,7 +100,7 @@ public class XMLBuilder extends NullBuilder {
 
     protected static String openTag(DataCapsule dc) {
         String retval = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("<");
         sb.append(dc.getName() + " ");
         Iterator<Entry<String, Object>> it = dc.getAllMetaData();

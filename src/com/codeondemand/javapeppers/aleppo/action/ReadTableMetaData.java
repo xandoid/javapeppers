@@ -253,7 +253,7 @@ public class ReadTableMetaData extends RecordProcessor {
 
     protected TreeMap<String, Integer> getTypeTable() {
         if (typeTable == null) {
-            typeTable = new TreeMap<String, Integer>();
+            typeTable = new TreeMap<>();
         }
         return typeTable;
     }

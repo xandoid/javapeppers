@@ -84,6 +84,6 @@ public class XMLListProcessor extends UtlRunnable {
     //***********************************************************************
     // Private data and methods
     //***********************************************************************
-    private ConcurrentLinkedQueue<String> itemQ = new ConcurrentLinkedQueue<String>();
+    private ConcurrentLinkedQueue<String> itemQ = new ConcurrentLinkedQueue<>();
     private Transformer t = null;
 }
