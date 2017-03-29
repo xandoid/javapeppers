@@ -83,13 +83,11 @@ public class XMLBuilder extends NullBuilder {
     }
 
     protected static String closeTag(String tag) {
-        String retval = "</" + tag + ">";
-        return retval;
+        return "</" + tag + ">";
     }
 
     protected static String openTag(String tag) {
-        String retval = "<" + tag + ">";
-        return retval;
+        return "<" + tag + ">";
     }
 
     protected static String startTag(String tag) {
@@ -126,8 +124,7 @@ public class XMLBuilder extends NullBuilder {
     }
 
     protected static String writeXMLPreamble() {
-        String retval = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>"; //$NON-NLS-1$
-        return retval;
+        return "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
     }
 
     protected String rootName = null; //$NON-NLS-1$

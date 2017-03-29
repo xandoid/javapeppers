@@ -42,7 +42,7 @@ public class TestUtilityGenerator extends TestCase {
 
         assertNotNull("Generating gaussian distributed numerics:", UtilityGenerator.generateRandomGaussian(mean, stdev, invert, add_noise, min, max));
     }
-    @Test
+
     public static void testGenerateRandomGaussianInteger() {
         double mean = 10.0;
         double stdev = 2;

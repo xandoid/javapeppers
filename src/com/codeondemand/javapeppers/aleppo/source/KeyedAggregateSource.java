@@ -21,8 +21,7 @@ public class KeyedAggregateSource extends AggregateSource {
 
     @Override
     public RecordCapsule getCurrentRecord() {
-        RecordCapsule retval = currentRecord;
-        return retval;
+        return currentRecord;
     }
 
     public RecordCapsule getNextRecord() {
@@ -85,13 +84,12 @@ public class KeyedAggregateSource extends AggregateSource {
     }
 
     protected RecordCapsule combineNull(RecordCapsule current, RecordCapsule append) {
-        RecordCapsule retval = current;
 
         for (int i = 0; i < append.getFieldCount(); i++) {
             current.addDataCapsule(new DataCapsule(append.getField(i).getName(), null), false);
         }
 
-        return retval;
+        return current;
     }
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("KeyedAggregateSource");

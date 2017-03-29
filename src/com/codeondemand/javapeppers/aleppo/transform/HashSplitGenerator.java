@@ -10,7 +10,6 @@ public class HashSplitGenerator extends RecordTransform {
 
     @Override
     public RecordCapsule doTransform(RecordCapsule input) {
-        RecordCapsule retval = input;
         if (!initialized) {
             initialized = doInitialization();
         }
@@ -37,7 +36,7 @@ public class HashSplitGenerator extends RecordTransform {
             }
         }
 
-        return retval;
+        return input;
     }
 
     @Override

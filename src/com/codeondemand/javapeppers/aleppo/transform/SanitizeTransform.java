@@ -40,7 +40,6 @@ public class SanitizeTransform extends RecordTransform {
 
     public RecordCapsule doTransform(RecordCapsule input) {
 
-        RecordCapsule retval = input;
         DataCapsule dc = null;
         if ((dc = input.getField(field)) != null) {
             if (type.equals(UtilityGenerator.PASSPORT_NUMBER)) {
@@ -59,7 +58,7 @@ public class SanitizeTransform extends RecordTransform {
                 setIntegerData(dc);
             }
         }
-        return retval;
+        return input;
     }
 
 

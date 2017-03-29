@@ -86,7 +86,6 @@ public class MQTTProcessLauncher extends MqttSubscriber implements Observer, Mqt
         MQTTProcessLauncher t = new MQTTProcessLauncher();
 
         try {
-            ;
             t.mqtt_sub = new MqttClient(cstring, client);
             t.mqtt_sub.setCallback(t);
             t.mqtt_sub.connect(opts);

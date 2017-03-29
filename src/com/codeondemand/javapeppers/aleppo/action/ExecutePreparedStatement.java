@@ -16,7 +16,6 @@ public class ExecutePreparedStatement extends RecordProcessor {
 
     @Override
     public RecordCapsule processRecord(RecordCapsule input) {
-        RecordCapsule retval = input;
         ArrayList<String> params = new ArrayList<String>();
         for (String field : fields) {
             params.add("%" + input.getField(field).getData().toString() + "%");
@@ -25,7 +24,7 @@ public class ExecutePreparedStatement extends RecordProcessor {
         if (input.getField(output.get(0)).getData() == null || input.getField(output.get(0)).getData().toString().equals("")) {
             executeStatement(input);
         }
-        return retval;
+        return input;
     }
 
     @Override
@@ -115,11 +114,10 @@ public class ExecutePreparedStatement extends RecordProcessor {
     }
 
     protected String decryptPWD(String input) {
-        String retval = input;
 
         // Not doing anything for now.
 
-        return retval;
+        return input;
     }
 
     protected Connection con = null;

@@ -19,6 +19,6 @@ public interface MQListener {
      *
      * @param message The text payload of an MQ message.
      */
-    public void incomingMessage(String message);
+    void incomingMessage(String message);
 
 }

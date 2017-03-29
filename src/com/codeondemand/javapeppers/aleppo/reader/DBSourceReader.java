@@ -236,8 +236,6 @@ public class DBSourceReader extends SourceReader {
         //TO-DO: what should go here?
     }
 
-    ;
-
     protected void addField(RecordCapsule rc, String name, int type, Object value) {
         DataCapsule d = new DataCapsule(name, value);
         d.setMetaData("type", type); //$NON-NLS-1$

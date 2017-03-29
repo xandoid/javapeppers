@@ -102,13 +102,12 @@ public class RESTProcess extends RecordProcessor {
     }
 
     protected static RecordCapsule processResponse(RecordCapsule input, String response) {
-        RecordCapsule retval = input;
         if (response != null && response.length() > 0) {
-            retval.addDataCapsule(new DataCapsule(REST_RESPONSE, response.toString()), false);
+            input.addDataCapsule(new DataCapsule(REST_RESPONSE, response.toString()), false);
         } else {
-            retval.addDataCapsule(new DataCapsule(REST_RESPONSE, AleppoMessages.getString("RESTProcess.5")), false); //$NON-NLS-1$
+            input.addDataCapsule(new DataCapsule(REST_RESPONSE, AleppoMessages.getString("RESTProcess.5")), false); //$NON-NLS-1$
         }
-        return retval;
+        return input;
     }
 
     public final static String REST_RESPONSE = "REST_RESPONSE"; //$NON-NLS-1$

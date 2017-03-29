@@ -10,7 +10,6 @@ public class MqttTest extends MqttTaskLauncher {
     }
 
     public void initialize() {
-        ;
         super.initialize("poblano/resources/application_properties.xml");
         System.out.println("Finished");
     }

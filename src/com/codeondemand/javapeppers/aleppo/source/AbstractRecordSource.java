@@ -22,7 +22,7 @@ public interface AbstractRecordSource {
      *
      * @return true if successfully closed.
      */
-    public abstract boolean closeSource();
+    boolean closeSource();
 
     /**
      * A convenience method to allow getting the current record multiple times.  It could
@@ -32,7 +32,7 @@ public interface AbstractRecordSource {
      * @return An Object representing the current record.  Should return null if the record
      * source has not yet read a record.
      */
-    public abstract RecordCapsule getCurrentRecord();
+    RecordCapsule getCurrentRecord();
 
     /**
      * A generic method that must be implemented by a subclass to return application
@@ -40,7 +40,7 @@ public interface AbstractRecordSource {
      *
      * @return An array of objects that are application specific keys.
      */
-    public abstract int getRecordKey();
+    int getRecordKey();
 
 
     /**
@@ -50,7 +50,7 @@ public interface AbstractRecordSource {
      * @return An Object representing the current record.  Should return null if the record
      * source has not yet read a record.
      */
-    public abstract RecordCapsule getNextRecord();
+    RecordCapsule getNextRecord();
 
     /**
      * A generic interface for getting the header record(s). This will vary by the type
@@ -58,7 +58,7 @@ public interface AbstractRecordSource {
      *
      * @return An Object that represents the header record.
      */
-    public abstract RecordCapsule getHeaderRecord();
+    RecordCapsule getHeaderRecord();
 
     /**
      * A generic method for allowing the record source to be reset so it can be
@@ -66,9 +66,9 @@ public interface AbstractRecordSource {
      *
      * @return true if successful;
      */
-    public abstract boolean reset();
+    boolean reset();
 
-    public abstract void setProperties(Properties props);
+    void setProperties(Properties props);
 
 
 }

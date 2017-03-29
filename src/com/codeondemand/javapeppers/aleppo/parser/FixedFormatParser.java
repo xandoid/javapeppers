@@ -8,7 +8,6 @@ import com.codeondemand.javapeppers.aleppo.common.FieldSpecification;
 import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class FixedFormatParser extends KeyedRecordParser {

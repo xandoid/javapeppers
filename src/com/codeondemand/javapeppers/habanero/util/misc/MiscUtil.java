@@ -422,7 +422,6 @@ public class MiscUtil {
         // Base64 b64 = new Base64(true);
         // String filename = b64.encodeToString(hash.substring(0,10).getBytes()
         // );
-        String filename = hash;
         if (map.isEmpty()) {
             map.put('A', 'A');
             map.put('B', 'B');
@@ -490,7 +489,7 @@ public class MiscUtil {
             level++;
         }
 
-        retval = String.copyValueOf(chars).trim() + filename.trim();
+        retval = String.copyValueOf(chars).trim() + hash.trim();
         return retval;
     }
 

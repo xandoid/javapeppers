@@ -148,7 +148,7 @@ public class DataCapsule implements Serializable {
      * @param data The Object that encapsulates the data associated with this
      *             DataCapsule.
      */
-    public synchronized boolean setData(Object data) {
+    public synchronized void setData(Object data) {
 
         this.data = data;
         logger.debug("Setting data for " + name + " : " + data);
@@ -158,7 +158,6 @@ public class DataCapsule implements Serializable {
             setMetaData(AleppoConstants.ALEPPO_DC_MDATA_TYPE_KEY, data.getClass().getCanonicalName());
             isNull = false;
         }
-        return true;
     }
 
     /**

@@ -20,13 +20,12 @@ public class JSONBuilder extends NullBuilder {
 
     public Object buildRecord(RecordCapsule r) {
 
-        RecordCapsule retval = r;
         //System.out.println( r.toString());
         String bar = buildJSON(r);
         if (bar != null) {
             r.addDataCapsule(new DataCapsule(outputField, bar), false);
         }
-        return retval;
+        return r;
     }
 
     public Object buildHeader(RecordCapsule r) {

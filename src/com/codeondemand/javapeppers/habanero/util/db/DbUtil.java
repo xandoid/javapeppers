@@ -173,7 +173,6 @@ public class DbUtil {
      * @return A java.sql.Timestamp object.
      */
     public static Timestamp createTimestamp(long millis) {
-        ;
         return new Timestamp(millis);
     }
 

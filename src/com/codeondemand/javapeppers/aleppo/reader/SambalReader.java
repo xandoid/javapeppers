@@ -28,13 +28,12 @@ public class SambalReader extends SourceReader {
         RecordCapsule retval = new RecordCapsule("record", "record");
         for (DataField fieldSpec : fieldSpecs) {
             if (fieldSpec instanceof DataField) {
-                DataField f = fieldSpec;
                 if (firstread) {
-                    retval.addDataCapsule(new DataCapsule(f.getName(), f.getName()), false);
+                    retval.addDataCapsule(new DataCapsule(fieldSpec.getName(), fieldSpec.getName()), false);
 
                     firstread = false;
                 } else {
-                    retval.addDataCapsule(new DataCapsule(f.getName(), f.getNextValue()), false);
+                    retval.addDataCapsule(new DataCapsule(fieldSpec.getName(), fieldSpec.getNextValue()), false);
                 }
             }
         }

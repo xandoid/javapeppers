@@ -259,12 +259,11 @@ public class HiveTableDefinitionBuilder extends NullBuilder {
     private String buildStart() {
 
         String tblname = "t_" + dbout + "_" + schema + "_e_" + table;
-        String sb = ("use " + dbout + ";\n") + "--DROP TABLE IF EXISTS " + mapTableName(tblname) + ";\n" + "CREATE EXTERNAL TABLE IF NOT EXISTS " + mapTableName(tblname) + "( \n\tingest_id string, \n\trid_orig string, \n\tingest_ts string,";
         // //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 
 
-        return sb;
+        return ("use " + dbout + ";\n") + "--DROP TABLE IF EXISTS " + mapTableName(tblname) + ";\n" + "CREATE EXTERNAL TABLE IF NOT EXISTS " + mapTableName(tblname) + "( \n\tingest_id string, \n\trid_orig string, \n\tingest_ts string,";
 
     }
 

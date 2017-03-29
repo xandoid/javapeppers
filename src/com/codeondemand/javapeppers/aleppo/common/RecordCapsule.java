@@ -58,7 +58,6 @@ public class RecordCapsule extends DataCapsule {
         } else {
             retval = false;
         }
-        ;
         return retval;
     }
 

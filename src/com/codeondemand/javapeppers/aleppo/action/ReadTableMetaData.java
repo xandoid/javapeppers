@@ -259,15 +259,12 @@ public class ReadTableMetaData extends RecordProcessor {
     }
 
     protected RecordCapsule newRecord(String name) {
-        RecordCapsule retval = new RecordCapsule(name, null);
-        return retval;
+        return new RecordCapsule(name, null);
     }
 
     protected void endRecord(RecordCapsule rc) {
         // TO-DO: what should go here?
     }
-
-    ;
 
     protected void addField(RecordCapsule rc, String name, int type, Object value) {
 

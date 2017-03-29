@@ -50,8 +50,7 @@ public class XMLTransformerFactory {
             public Source resolve(String href, String base) throws TransformerException {
 
                 String filename = new File(".", href).toString();
-                Source source = new StreamSource(ClassLoader.getSystemResourceAsStream(filename));
-                return source;
+                return new StreamSource(ClassLoader.getSystemResourceAsStream(filename));
             }
         });
         try {
@@ -82,8 +81,7 @@ public class XMLTransformerFactory {
                 public Source resolve(String href, String base) throws TransformerException {
 
                     String filename = new File(".", href).toString();
-                    Source source = new StreamSource(ClassLoader.getSystemResourceAsStream(filename));
-                    return source;
+                    return new StreamSource(ClassLoader.getSystemResourceAsStream(filename));
                 }
             });
 

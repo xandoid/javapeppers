@@ -10,9 +10,9 @@ import java.util.TreeMap;
 
 public interface RecordParser {
 
-    public RecordCapsule parseRecord(Object input);
+    RecordCapsule parseRecord(Object input);
 
-    public void setProperties(Properties props);
+    void setProperties(Properties props);
 
-    public boolean initialize(TreeMap<String, Object> attributes);
+    boolean initialize(TreeMap<String, Object> attributes);
 }

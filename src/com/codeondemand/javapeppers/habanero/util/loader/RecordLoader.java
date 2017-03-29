@@ -14,8 +14,6 @@ public class RecordLoader extends Process {
     public RecordLoader() {
     }
 
-    ;
-
     //***********************************************************************
     // Public methods and data
     //***********************************************************************

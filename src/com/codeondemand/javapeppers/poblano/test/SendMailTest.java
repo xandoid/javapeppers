@@ -18,7 +18,6 @@ public class SendMailTest {
     }
 
     public void run() {
-        ;
         if (!initialized) {
             initialized = doInitialization();
         }

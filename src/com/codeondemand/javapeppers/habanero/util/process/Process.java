@@ -14,8 +14,6 @@ public abstract class Process extends Observable implements Observer, Runnable {
     public Process() {
     }
 
-    ;
-
 
     // ***********************************************************************
     // Public methods and data

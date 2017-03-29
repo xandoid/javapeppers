@@ -83,13 +83,12 @@ public class SOAPHTTPProcess extends RecordProcessor {
     }
 
     private static RecordCapsule processResponse(RecordCapsule input, String response) {
-        RecordCapsule retval = input;
         if (response.length() > 0) {
-            retval.addDataCapsule(new DataCapsule("SOAP_RESPONSE", response.toString()), false);
+            input.addDataCapsule(new DataCapsule("SOAP_RESPONSE", response.toString()), false);
         } else {
-            retval.addDataCapsule(new DataCapsule("SOAP_RESPONSE", "No response"), false);
+            input.addDataCapsule(new DataCapsule("SOAP_RESPONSE", "No response"), false);
         }
-        return retval;
+        return input;
     }
 
     public RecordCapsule processRecord(RecordCapsule input) {

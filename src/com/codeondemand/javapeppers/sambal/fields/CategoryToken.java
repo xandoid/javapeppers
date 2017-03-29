@@ -20,7 +20,7 @@ public class CategoryToken extends TokenField {
 
     public boolean initialize(int type, String[] list) {
 
-        super.initialize(type);
+        boolean retval = super.initialize(type);
 
         int totalcount = 0;
         for (String aList1 : list) {
@@ -33,6 +33,7 @@ public class CategoryToken extends TokenField {
                     totalcount += value;
                 } catch (NumberFormatException nfe) {
                     nfe.printStackTrace();
+                    retval = false;
                 }
             }
         }
@@ -56,11 +57,12 @@ public class CategoryToken extends TokenField {
                     }
                 } catch (NumberFormatException nfe) {
                     nfe.printStackTrace();
+                    retval = false;
                 }
             }
         }
 
-        return true;
+        return retval;
     }
 
     private Random rangen = new Random();

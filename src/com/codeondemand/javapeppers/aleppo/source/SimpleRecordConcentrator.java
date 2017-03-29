@@ -44,8 +44,7 @@ public class SimpleRecordConcentrator extends SourceConcentrator {
 
     @Override
     public RecordCapsule buildRecord(RecordCapsule currentRecord) {
-        RecordCapsule retval = currentRecord;
-        return retval;
+        return currentRecord;
     }
 
     private static RecordCapsule createNewRecord(RecordCapsule rec) {

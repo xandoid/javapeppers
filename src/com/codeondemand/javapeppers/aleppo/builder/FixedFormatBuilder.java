@@ -29,8 +29,7 @@ public class FixedFormatBuilder extends NullBuilder {
     }
 
     public boolean doInitialization() {
-        boolean retval = true;
-        return retval;
+        return true;
     }
 
     private boolean buildFields(RecordCapsule r) {

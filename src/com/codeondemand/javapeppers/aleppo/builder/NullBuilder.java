@@ -29,8 +29,7 @@ public class NullBuilder extends RecordBuilder {
     }
 
     public Object buildHeader(RecordCapsule r) {
-        Object retval = new String("");
 
-        return retval;
+        return new String("");
     }
 }
