@@ -32,7 +32,7 @@ public class TestUtilityGenerator extends TestCase {
 
     }
 
-    public static void test_generateRandomGaussian() {
+    public static void testGenerateRandomGaussian() {
         double mean = 10.0;
         double stdev = 2;
         boolean invert = false;
@@ -42,8 +42,8 @@ public class TestUtilityGenerator extends TestCase {
 
         assertNotNull("Generating gaussian distributed numerics:", UtilityGenerator.generateRandomGaussian(mean, stdev, invert, add_noise, min, max));
     }
-
-    public static void test_generateRandomGaussianInteger() {
+    @Test
+    public static void testGenerateRandomGaussianInteger() {
         double mean = 10.0;
         double stdev = 2;
         boolean invert = false;
@@ -54,16 +54,16 @@ public class TestUtilityGenerator extends TestCase {
         assertNotNull("Generating gaussian distributed integer:", UtilityGenerator.generateRandomGaussianInteger(mean, stdev, invert, add_noise, min, max));
     }
 
-    public static void test_generateRandomAlphaNumeric() {
+    public static void testGenerateRandomAlphaNumeric() {
         assertEquals("Generating a random alphanumeric string", true, UtilityGenerator.generateRandomAlphaNumericString(10).length() == 10);
     }
 
-    public static void test_generateRandomAlpha() {
+    public static void testGenerateRandomAlpha() {
         assertEquals("Generating a random alphanumeric string", true, UtilityGenerator.generateRandomAlphaString(10).length() == 10);
 
     }
 
-    public static void test_generateRandomNumeric() {
+    public static void testGenerateRandomNumeric() {
         int length = 10;
         int prec = 2;
         String delim = ",";
@@ -71,12 +71,12 @@ public class TestUtilityGenerator extends TestCase {
         assertNotNull("Generating a random numeric string", UtilityGenerator.generateRandomNumericString(length, prec, delim, decpt));
     }
 
-    public static void test_generateNationalID() {
+    public static void testGenerateNationalID() {
         assertNotNull("Generating national id for us:", UtilityGenerator.generateNationalIdNumber("us"));
         assertNotNull("Generating national id for uk:", UtilityGenerator.generateNationalIdNumber("uk"));
     }
 
-    public static void test_generateTimestamp(long millis) {
+    public static void testGenerateTimestamp(long millis) {
         assertNotNull("Generating a timestamp:", UtilityGenerator.generateTimeStamp(millis));
     }
 
