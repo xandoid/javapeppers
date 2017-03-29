@@ -59,7 +59,7 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
                         Iterator<Integer> it = colList.iterator();
                         int idx = 0;
                         while (it.hasNext()) {
-                            int i = ((Integer) it.next()).intValue();
+                            int i = it.next().intValue();
                             CellValue data = null;
                             HSSFCell c = row.getCell(i);
                             String value = "";
@@ -121,7 +121,7 @@ public class ExcelReader extends SourceReader implements FilenameFilter {
                 boolean allempty = true;
                 Iterator<Integer> it = colList.iterator();
                 while (it.hasNext()) {
-                    if (row.getCell((Integer) it.next()) != null) {
+                    if (row.getCell(it.next()) != null) {
                         allempty = false;
                     }
                 }

@@ -24,7 +24,7 @@ public class AggregateSource extends RecordSource {
         boolean retval = false;
         if (sources != null) {
             for (RecordSource source : sources) {
-                ((RecordSource) source).closeSource();
+                source.closeSource();
             }
             retval = true;
         }
@@ -36,7 +36,7 @@ public class AggregateSource extends RecordSource {
         RecordCapsule retval = null;
         if (sources != null) {
             for (RecordSource source : sources) {
-                retval = combine(retval, ((RecordSource) source).getCurrentRecord());
+                retval = combine(retval, source.getCurrentRecord());
             }
         }
         return retval;
@@ -47,7 +47,7 @@ public class AggregateSource extends RecordSource {
         RecordCapsule retval = null;
         if (sources != null) {
             for (RecordSource source : sources) {
-                retval = combine(retval, ((RecordSource) source).getHeaderRecord());
+                retval = combine(retval, source.getHeaderRecord());
             }
         }
         return retval;
@@ -60,7 +60,7 @@ public class AggregateSource extends RecordSource {
         if (sources != null) {
 
             for (RecordSource source1 : sources) {
-                if (((RecordSource) source1).getNextRecord() == null) {
+                if (source1.getNextRecord() == null) {
                     finished = true;
                     retval = null;
                     break;
@@ -68,8 +68,8 @@ public class AggregateSource extends RecordSource {
             }
             if (!finished) {
                 for (RecordSource source : sources) {
-                    logger.debug(((RecordSource) source).getCurrentRecord());
-                    retval = combine(retval, ((RecordSource) source).getCurrentRecord());
+                    logger.debug(source.getCurrentRecord());
+                    retval = combine(retval, source.getCurrentRecord());
                 }
             }
         }
@@ -102,7 +102,7 @@ public class AggregateSource extends RecordSource {
         boolean retval = false;
         if (sources != null) {
             for (RecordSource source : sources) {
-                ((RecordSource) source).reset();
+                source.reset();
             }
             retval = true;
         }

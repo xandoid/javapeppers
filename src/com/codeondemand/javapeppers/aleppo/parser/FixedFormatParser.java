@@ -22,7 +22,7 @@ public class FixedFormatParser extends KeyedRecordParser {
         RecordCapsule r = null;
         if (input instanceof String) {
             r = new RecordCapsule("record", "record"); // NON-NLS-1
-            Iterator<FieldSpecification> it = ((ArrayList<FieldSpecification>) fields).iterator();
+            Iterator<FieldSpecification> it = fields.iterator();
             //int idx = 0;
             while (it.hasNext()) {
                 FieldSpecification fs = it.next();

@@ -109,7 +109,7 @@ public class MQTTProcessLauncher extends MqttSubscriber implements Observer, Mqt
             if ((Long) arg < 0L) {
                 success = false;
             }
-            logger.debug("Connector reports delivering " + (Long) arg + " record.");
+            logger.debug("Connector reports delivering " + arg + " record.");
         }
     }
 

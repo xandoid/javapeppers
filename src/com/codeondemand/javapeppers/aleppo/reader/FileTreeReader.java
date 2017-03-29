@@ -29,7 +29,7 @@ public class FileTreeReader extends SourceReader {
             initialized = doInitialization();
         }
         if (ifiles != null && ifiles.hasNext()) {
-            File foo = ifiles.next();
+            File foo = (File) ifiles.next();
             if (foo.isFile() && listFiles) {
                 retval = foo.getAbsoluteFile();
             } else {
@@ -70,6 +70,7 @@ public class FileTreeReader extends SourceReader {
         File r = new File(root);
         if (r.isDirectory()) {
             ifiles = FileUtils.listFiles(r, extensions, recurse).iterator();
+
         } else {
             logger.error("Cannot list files.");
         }
@@ -82,7 +83,7 @@ public class FileTreeReader extends SourceReader {
     private String[] extensions = null;
     private boolean recurse = false;
     Collection<File> f = null;
-    Iterator<File> ifiles = null;
+    Iterator ifiles = null;
     private boolean listDirs = false;
     private boolean listFiles = true;
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("FileTreeReader");

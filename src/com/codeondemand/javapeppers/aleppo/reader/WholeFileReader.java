@@ -167,9 +167,9 @@ public class WholeFileReader extends SourceReader {
                         // Skip over blank records.
                         if (temp != null) {
                             if (doTrim) {
-                                bigbuff.append((String) temp.toString().trim() + "\n");
+                                bigbuff.append(temp.toString().trim() + "\n");
                             } else {
-                                bigbuff.append((String) temp.toString() + "\n");
+                                bigbuff.append(temp.toString() + "\n");
                             }
 
                         }

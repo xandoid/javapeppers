@@ -54,7 +54,7 @@ public class ExcelEventReader extends SourceReader implements FilenameFilter, Ob
             Iterator<Integer> it = colList.iterator();
             int idx = 0;
             while (it.hasNext()) {
-                int i = ((Integer) it.next()).intValue();
+                int i = it.next().intValue();
                 String value = "";
                 if (row[i] != null) {
                     value = row[i].toString();

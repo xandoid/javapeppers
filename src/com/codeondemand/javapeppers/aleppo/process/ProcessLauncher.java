@@ -86,7 +86,7 @@ public class ProcessLauncher implements Observer {
             if ((Long) arg < 0L) {
                 success = false;
             }
-            logger.debug("Connector reports delivering " + (Long) arg + " record.");
+            logger.debug("Connector reports delivering " + arg + " record.");
         }
     }
 

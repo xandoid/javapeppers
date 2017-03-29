@@ -98,7 +98,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
             retval = retval.replace("@UTIME@", ltime);
         }
         if (retval.contains("@HDFS_URI@")) {
-            retval = retval.replace("@HDFS_URI@", (CharSequence) props.getProperty(hdfspfx + "uri"));
+            retval = retval.replace("@HDFS_URI@", props.getProperty(hdfspfx + "uri"));
         }
 
         if (retval.contains("@QUERY1@")) {
@@ -121,7 +121,7 @@ public class BuildStreamSetsPipeline extends RecordProcessor {
             retval = retval.replace("@SOURCE@", rc.getField("SOURCE").getData().toString().toLowerCase());
         }
         if (retval.contains("@RECS_PER_FILE@")) {
-            retval = retval.replace("@RECS_PER_FILE@", (CharSequence) props.getProperty(hdfspfx + "records_per_file"));
+            retval = retval.replace("@RECS_PER_FILE@", props.getProperty(hdfspfx + "records_per_file"));
         }
         if (retval.contains("@TABLE@")) {
             retval = retval.replace("@TABLE@", rc.getField("TABLE_NAME").getData().toString().toLowerCase());

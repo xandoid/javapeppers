@@ -57,7 +57,7 @@ public class XMLListProcessor extends UtlRunnable {
 
                 // Process all of the events.
                 while (!itemQ.isEmpty()) {
-                    String item = (String) itemQ.poll();
+                    String item = itemQ.poll();
                     String result = processItem(t, item);
                     writeItem(result);
                 }

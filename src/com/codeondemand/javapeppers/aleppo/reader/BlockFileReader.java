@@ -112,7 +112,7 @@ public class BlockFileReader extends SourceReader {
             try {
                 if (file.canRead()) {
                     if (isBinary) {
-                        fsize = file.length();
+                        long fsize = file.length();
                         if (fsize > MAX_SIZE) {
                             logger.error("File too big for processing");
                         } else {
@@ -192,7 +192,7 @@ public class BlockFileReader extends SourceReader {
 
                         // Skip over blank records.
                         if (temp != null) {
-                            bigbuff.append((String) temp.toString().trim() + "\n");
+                            bigbuff.append(temp.toString().trim() + "\n");
                         }
                         // See if that was the last record.n
                         if (!rdr.ready()) {
@@ -220,7 +220,6 @@ public class BlockFileReader extends SourceReader {
     private boolean isBinary = false;
     private static final long MAX_SIZE = Integer.MAX_VALUE;
     private static final int BLOCK_SIZE = 10000;
-    private long fsize = 0L;
     private boolean encode = false;
     private boolean decode = false;
 

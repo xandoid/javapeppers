@@ -28,7 +28,7 @@ public class SambalReader extends SourceReader {
         RecordCapsule retval = new RecordCapsule("record", "record");
         for (DataField fieldSpec : fieldSpecs) {
             if (fieldSpec instanceof DataField) {
-                DataField f = (DataField) fieldSpec;
+                DataField f = fieldSpec;
                 if (firstread) {
                     retval.addDataCapsule(new DataCapsule(f.getName(), f.getName()), false);
 

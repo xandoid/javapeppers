@@ -78,7 +78,7 @@ public class MqttTopicMonitor extends MqttReader implements MqttCallback {
             if (omit_topic) {
                 input.add((String) message);
             } else {
-                input.add((String) topic + "|" + message);
+                input.add(topic + "|" + message);
             }
         } else {
             System.err.println("Max queue exceeded.");

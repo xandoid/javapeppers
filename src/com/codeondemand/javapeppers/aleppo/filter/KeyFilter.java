@@ -41,7 +41,7 @@ public class KeyFilter extends RecordFilter {
         boolean retval = false;
         if (pmap.containsKey("file") && pmap.get("file") instanceof String) {
             String filename = (String) pmap.get("file");
-            try (BufferedReader brd = new BufferedReader(new FileReader(new File((String) filename)))) {
+            try (BufferedReader brd = new BufferedReader(new FileReader(new File(filename)))) {
 
                 retval = true;
                 while (brd.ready()) {

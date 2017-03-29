@@ -131,7 +131,7 @@ public class RecordConnector extends FlowNode implements Runnable {
             for (RecordProcessor proc : procs) {
                 if (proc != null && proc instanceof RecordProcessor) {
                     logger.debug(AleppoMessages.getString("RecordConnector.2") + proc.getClass()); //$NON-NLS-1$
-                    processors.add((RecordProcessor) proc);
+                    processors.add(proc);
 
                 } else {
                     retval = false;

@@ -22,7 +22,7 @@ public class FieldStatistics extends MonitorProcess {
             String key = i.next().toString();
             sb.append("\nStatistics for " + key + "\n");
             if (stats.get(key) instanceof SummaryStatistics) {
-                sb.append(((SummaryStatistics) stats.get(key)).toString());
+                sb.append(stats.get(key).toString());
             } else {
                 DescriptiveStatistics temp = (DescriptiveStatistics) stats.get(key);
                 sb.append(temp.toString());

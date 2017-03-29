@@ -108,9 +108,9 @@ public class XMLBuilder extends NullBuilder {
         Iterator<Entry<String, Object>> it = dc.getAllMetaData();
         if (it != null) {
             while (it.hasNext()) {
-                Entry<String, Object> entry = (Entry<String, Object>) it.next();
+                Entry<String, Object> entry = it.next();
                 String name = entry.getKey();
-                String value = (String) entry.getValue().toString();
+                String value = entry.getValue().toString();
                 sb.append(addAttribute(name, value));
             }
         }

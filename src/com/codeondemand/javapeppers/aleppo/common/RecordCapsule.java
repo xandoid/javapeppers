@@ -256,7 +256,7 @@ public class RecordCapsule extends DataCapsule {
         StringBuffer sb = new StringBuffer();
 
         sb.append("RecordCapsule:" + name + "\n");
-        Iterator<DataCapsule> it = ((ArrayList<DataCapsule>) fields).iterator();
+        Iterator<DataCapsule> it = fields.iterator();
         while (it.hasNext()) {
             DataCapsule foo = it.next();
             String name = foo.getName();

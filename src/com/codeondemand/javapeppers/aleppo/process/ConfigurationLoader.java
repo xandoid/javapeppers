@@ -164,7 +164,7 @@ public class ConfigurationLoader {
             if (aggsrc.getLength() > 0) {
                 Element agg = (Element) aggsrc.item(0);
                 String aggClass = agg.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_CLASS);
-                NodeList srcs = ((Element) agg).getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_SOURCE_TAG);
+                NodeList srcs = agg.getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_SOURCE_TAG);
                 src_agg = createAggregator(aggClass, srcs);
             }
 
@@ -172,11 +172,11 @@ public class ConfigurationLoader {
             // There may not be one, but that is also fine.
             SourceConcentrator src_conc = null;
             if (src_agg == null) {
-                NodeList src = ((Element) n).getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_CONCENTRATOR_TAG);
+                NodeList src = n.getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_CONCENTRATOR_TAG);
                 if (src.getLength() > 0) {
                     Element conc = (Element) src.item(0);
                     String concClass = conc.getAttribute(AleppoConstants.ALEPPO_CONFIG_ALL_PARAM_CLASS);
-                    NodeList srcs = ((Element) conc).getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_SOURCE_TAG);
+                    NodeList srcs = conc.getElementsByTagName(AleppoConstants.ALEPPO_CONFIG_SOURCE_TAG);
                     if (srcs.getLength() > 0) {
                         src_conc = createConcentrator(concClass, createSource((Element) srcs.item(0)));
                     }
@@ -272,7 +272,7 @@ public class ConfigurationLoader {
                 Object temp = Class.forName(name).newInstance();
                 if (temp != null && temp instanceof SourceConcentrator) {
                     retval = (SourceConcentrator) temp;
-                    ((SourceConcentrator) retval).setSource(src);
+                    retval.setSource(src);
                 }
             } catch (InstantiationException e) {
                 // TODO Auto-generated catch block
@@ -302,7 +302,7 @@ public class ConfigurationLoader {
                     for (int i = 0; i < srcs.getLength(); i++) {
                         RecordSource src = createSource((Element) srcs.item(i));
                         if (src != null) {
-                            ((AggregateSource) retval).setSource(src);
+                            retval.setSource(src);
                         }
                     }
                 }
@@ -628,22 +628,22 @@ public class ConfigurationLoader {
         if (name != null) {
             if (name.equals("com.codeondemand.javapeppers.aleppo.writer.FileRecordWriter")) { //$NON-NLS-1$
                 retval = new FileRecordWriter();
-                ((FileRecordWriter) retval).setPmap(getAttributes(nl.item(0)));
-                ((FileRecordWriter) retval).setProperties(props);
+                retval.setPmap(getAttributes(nl.item(0)));
+                retval.setProperties(props);
 
                 ((FileRecordWriter) retval).initialize(getAttributeFromNode(nl.item(0), "file"), Boolean //$NON-NLS-1$
                         .parseBoolean(getAttributeFromNode(nl.item(0), "append"))); //$NON-NLS-1$
             } else if (name.equals("com.codeondemand.javapeppers.aleppo.writer.SplitFileWriter")) { //$NON-NLS-1$
                 retval = new SplitFileWriter();
-                ((SplitFileWriter) retval).setPmap(getAttributes(nl.item(0)));
-                ((SplitFileWriter) retval).setProperties(props);
+                retval.setPmap(getAttributes(nl.item(0)));
+                retval.setProperties(props);
 
                 ((SplitFileWriter) retval).initialize(getAttributeFromNode(nl.item(0), "file"), Boolean //$NON-NLS-1$
                         .parseBoolean(getAttributeFromNode(nl.item(0), "append"))); //$NON-NLS-1$
             } else if (name.equals("com.codeondemand.javapeppers.aleppo.writer.GZIPDataFileWriter")) { //$NON-NLS-1$
                 retval = new GZIPDataFileWriter();
-                ((GZIPDataFileWriter) retval).setPmap(getAttributes(nl.item(0)));
-                ((GZIPDataFileWriter) retval).setProperties(props);
+                retval.setPmap(getAttributes(nl.item(0)));
+                retval.setProperties(props);
 
                 ((GZIPDataFileWriter) retval).initialize(getAttributeFromNode(nl.item(0), "file"), Boolean //$NON-NLS-1$
                         .parseBoolean(getAttributeFromNode(nl.item(0), "append"))); //$NON-NLS-1$
@@ -661,7 +661,7 @@ public class ConfigurationLoader {
                             ((UIRecordWriter) retval).initialize(rc);
                         }
                     } else {
-                        ((DestinationWriter) retval).setPmap(getAttributes(nl.item(0)));
+                        retval.setPmap(getAttributes(nl.item(0)));
                     }
                 }
             }
@@ -698,8 +698,8 @@ public class ConfigurationLoader {
                 retval = (RecordBuilder) createInstance(name);
             }
 
-            ((RecordBuilder) retval).initialize(getAttributes(nl.item(0)));
-            ((RecordBuilder) retval).setProperties(props);
+            retval.initialize(getAttributes(nl.item(0)));
+            retval.setProperties(props);
         }
         if (retval == null) {
             logger.error(AleppoMessages.getString("ConfigurationLoader.18") //$NON-NLS-1$
@@ -761,7 +761,7 @@ public class ConfigurationLoader {
         if (index < foo.length()) {
             retval = foo.substring(index, index + 1);
         } else {
-            int idx0 = (int) (foo.length() / index);
+            int idx0 = foo.length() / index;
             int idx1 = index % foo.length();
             int idx2 = index;
             retval = foo.substring(idx0, idx0 + 1);

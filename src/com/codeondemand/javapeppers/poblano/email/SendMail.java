@@ -127,7 +127,7 @@ public class SendMail {
             attachment = getStringProperty(props, "attachment");
             mailBodyFile = getStringProperty(props, "mail.body.file");
             mailBodyTxt = getStringProperty(props, "mail.body.txt");
-            replyTo = (String) props.getProperty("replyTo");
+            replyTo = props.getProperty("replyTo");
         }
 
         retval = initialized;

@@ -78,7 +78,7 @@ public class MqttMuxWriter extends DestinationWriter {
                     Iterator<String> it = list.iterator();
                     StringBuffer foo = new StringBuffer();
                     while (it.hasNext()) {
-                        String field = (String) it.next();
+                        String field = it.next();
                         String temp = ((RecordCapsule) data).getField(field).getData().toString();
                         foo.append(temp + "|");
                     }

@@ -172,7 +172,7 @@ public class FieldFrequency extends MonitorProcess {
                 if (!temp.containsKey(dc.getData().toString().trim())) {
                     temp.put(dc.getData().toString().trim(), new Long(1L));
                 } else {
-                    Long l = (Long) temp.get(dc.getData().toString().trim());
+                    Long l = temp.get(dc.getData().toString().trim());
                     l++;
                     temp.put(dc.getData().toString().trim(), l);
                 }
