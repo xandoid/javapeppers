@@ -9,7 +9,6 @@ import org.apache.poi.poifs.filesystem.DocumentInputStream;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -222,8 +221,8 @@ public class ExcelReaderEventModel extends Observable implements HSSFListener, R
     private Boolean continue_flg = true;
     private Boolean finished = false;
     private boolean data_record = false;
-    private Object finish_lock = new Object();
-    private Object continue_lock = new Object();
+    private final Object finish_lock = new Object();
+    private final Object continue_lock = new Object();
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger("ExcelReaderEventModel");
 

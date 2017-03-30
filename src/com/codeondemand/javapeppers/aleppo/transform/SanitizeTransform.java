@@ -9,10 +9,7 @@ import com.codeondemand.javapeppers.aleppo.common.RecordCapsule;
 import com.codeondemand.javapeppers.sambal.util.UtilityGenerator;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Random;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class SanitizeTransform extends RecordTransform {
 
@@ -69,13 +66,12 @@ public class SanitizeTransform extends RecordTransform {
     private void setTimestampData(DataCapsule dc) {
         GregorianCalendar min = new GregorianCalendar();
         min.clear();
-        min.set(1900, 0, 0);
+        min.set(1900, Calendar.JANUARY, 0);
         GregorianCalendar max = new GregorianCalendar();
         max.clear();
-        max.set(2011, 12, 31);
+        max.set(2020, Calendar.DECEMBER, 31);
 
-        if (pmap.containsKey(UtilityGenerator.PARAM_MIN)) {
-            String tmin = pmap.get(UtilityGenerator.PARAM_MIN).toString();
+        if (pmap.containsKey(UtilityGenerator.PARAM_MIN)) {          String tmin = pmap.get(UtilityGenerator.PARAM_MIN).toString();
             StringTokenizer stok = new StringTokenizer(tmin, "-");
             min.set(Integer.parseInt(stok.nextToken()), Integer.parseInt(stok.nextToken()), Integer.parseInt(stok.nextToken()));
         }
@@ -91,10 +87,10 @@ public class SanitizeTransform extends RecordTransform {
     private void setDateData(DataCapsule dc) {
         GregorianCalendar min = new GregorianCalendar();
         min.clear();
-        min.set(1900, 0, 0);
+        min.set(1900, Calendar.JANUARY, 0);
         GregorianCalendar max = new GregorianCalendar();
         max.clear();
-        max.set(2011, 12, 31);
+        max.set(2020, Calendar.DECEMBER, 31);
 
         if (pmap.containsKey(UtilityGenerator.PARAM_MIN)) {
             String tmin = pmap.get(UtilityGenerator.PARAM_MIN).toString();

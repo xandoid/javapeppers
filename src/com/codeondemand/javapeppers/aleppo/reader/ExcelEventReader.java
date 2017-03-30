@@ -210,8 +210,8 @@ public class ExcelEventReader extends SourceReader implements FilenameFilter, Ob
     private ArrayList<String> colNames = null;
     private String wbpattern = null;
     private Boolean ready = false;
-    private Object lock = new Object();
-    private Object lock2 = new Object();
+    private final Object lock = new Object();
+    private final Object lock2 = new Object();
 
     @SuppressWarnings("unused")
     private Integer oldRow = -1;
