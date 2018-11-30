@@ -11,7 +11,6 @@ public class AddTimestamp extends RecordProcessor {
 
     @Override
     public RecordCapsule processRecord(RecordCapsule input) {
-
         if (!initialized) {
             initialized = doInitialization();
         }
